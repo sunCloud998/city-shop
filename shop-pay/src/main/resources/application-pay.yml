@@ -10,6 +10,6 @@ pay:
   wx:
     appId: xxxx
     mchId: xxxxx
-    partnerKey: z1cGAqZoGisBRVR7cUpJSM6OjXrrVR3k
+    partnerKey: xxxxx
     certPath: wxpay/apiclient_cert.p12
     domain: http://api.shop.imis.tv/shop-doc
