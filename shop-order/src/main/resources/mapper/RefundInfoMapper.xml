@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidian.shop.mapper.RefundInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yidian.shop.entity.RefundInfo">
+        <id column="id" property="id"/>
+        <result column="merchant_id" property="merchantId"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="product_id" property="productId"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="refund_type" property="refundType"/>
+        <result column="refund_amount" property="refundAmount"/>
+        <result column="status" property="status"/>
+        <result column="refund_reason" property="refundReason"/>
+        <result column="refund_description" property="refundDescription"/>
+        <result column="refund_delivery_company" property="refundDeliveryCompany"/>
+        <result column="refund_delivery_no" property="refundDeliveryNo"/>
+        <result column="remark" property="remark"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, merchant_id, user_id, user_name, product_id, order_no, refund_type, refund_amount, status, refund_reason,
+        refund_description, refund_delivery_company, refund_delivery_no, remark, create_time, update_time, del_flag
+    </sql>
+
+    <select id="getRefundList" resultType="com.yidian.shop.vo.RefundInfoVo">
+        select
+        ri.id,
+        ri.merchant_id,
+        mui.merchant_name,
+        ri.user_id,
+        ri.user_name,
+        ri.product_id,
+        opv.product_name,
+        ri.order_no,
+        ri.refund_type,
+        ri.refund_amount,
+        ri.status,
+        ri.refund_reason,
+        ri.refund_description,
+        ri.refund_delivery_company,
+        ri.refund_delivery_no,
+        ri.remark,
+        ri.create_time
+        from t_refund_info ri
+        left join t_merchant_user_info mui on ri.merchant_id = mui.id
+        left join t_order_product_version opv on ri.order_no = opv.order_no and ri.product_id = opv.product_id and
+        ri.user_id = opv.user_id and ri.merchant_id = opv.merchant_id
+        where ri.del_flag = 0
+        <if test="param.merchantId != null">
+            and ri.merchant_id = #{param.merchantId}
+        </if>
+        <if test="param.userId != null">
+            and ri.user_id = #{param.userId}
+        </if>
+        <if test="param.orderNo != null and param.orderNo != ''">
+            and ri.order_no = #{param.orderNo}
+        </if>
+        <if test="param.refundType != null">
+            and ri.refund_type = #{param.refundType}
+        </if>
+        <if test="param.status != null">
+            and ri.status = #{param.status}
+        </if>
+        order by ri.update_time DESC
+    </select>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidian.shop.merchant.mapper.MerchantUserInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yidian.shop.merchant.entity.MerchantUserInfo">
+        <id column="id" property="id"/>
+        <result column="phone" property="phone"/>
+        <result column="merchant_name" property="merchantName"/>
+        <result column="password" property="password"/>
+        <result column="merchant_address" property="merchantAddress"/>
+        <result column="logo" property="logo"/>
+        <result column="introduction" property="introduction"/>
+        <result column="contact_name" property="contactName"/>
+        <result column="contact_mobile" property="contactMobile"/>
+        <result column="merchant_score" property="merchantScore"/>
+        <result column="merchant_weight" property="merchantWeight"/>
+        <result column="status" property="status"/>
+        <result column="province_name" property="provinceName"/>
+        <result column="province_id" property="provinceId"/>
+        <result column="city_name" property="cityName"/>
+        <result column="city_id" property="cityId"/>
+        <result column="district" property="district"/>
+        <result column="district_id" property="districtId"/>
+        <result column="remark" property="remark"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, phone, merchant_name, password, merchant_address, logo, introduction, contact_name, contact_mobile,
+        merchant_score, merchant_weight, status, province_name, province_id, city_name, city_id, district, district_id,
+        remark, create_time, update_time, del_flag
+    </sql>
+
+    <select id="getMerchantUserList" resultType="com.yidian.shop.merchant.entity.MerchantUserInfo">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        t_merchant_user_info
+        WHERE
+        del_flag = 0
+        <if test="param.phone != null and param.phone != ''">
+            and phone = #{param.phone}
+        </if>
+        <if test="param.merchantName != null and param.merchantName != ''">
+            and merchant_name LIKE CONCAT('%',#{param.merchantName},'%')
+        </if>
+        <if test="param.status != null and param.status != ''">
+            and status = #{param.status}
+        </if>
+        order by create_time desc
+    </select>
+</mapper>

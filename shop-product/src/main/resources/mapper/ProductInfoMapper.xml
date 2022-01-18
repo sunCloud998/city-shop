@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidian.shop.mapper.ProductInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yidian.shop.entity.ProductInfo">
+        <id column="id" property="id"/>
+        <result column="bar_code" property="barCode"/>
+        <result column="name" property="name"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="merchant_id" property="merchantId"/>
+        <result column="keywords" property="keywords"/>
+        <result column="status" property="status"/>
+        <result column="sort_order" property="sortOrder"/>
+        <result column="is_new" property="isNew"/>
+        <result column="is_hot" property="isHot"/>
+        <result column="advise_price" property="advisePrice"/>
+        <result column="cost_price" property="costPrice"/>
+        <result column="sale_price" property="salePrice"/>
+        <result column="up_time" property="upTime"/>
+        <result column="sale_count" property="saleCount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, bar_code, name, category_id, brand_id, merchant_id, keywords, status, sort_order, is_new, is_hot,
+        advise_price, cost_price, sale_price, up_time, sale_count, create_time, update_time, del_flag
+    </sql>
+
+    <select id="getProductInfoListByPage" resultType="com.yidian.shop.vo.ProductInfoVo">
+        select
+        pi.id,
+        pi.bar_code,
+        pi.name,
+        pi.category_id,
+        pi.brand_id,
+        pi.merchant_id,
+        pi.keywords,
+        pi.status,
+        pi.sort_order,
+        pi.is_new,
+        pi.is_hot,
+        pi.advise_price,
+        pi.cost_price,
+        pi.sale_price,
+        pi.up_time,
+        pi.sale_count,
+        pi.create_time,
+        tpc.name as categoryName,
+        tpb.name as brandName
+        from t_product_info pi
+        left join t_product_category tpc on pi.category_id = tpc.id
+        left join t_product_brand tpb on pi.brand_id = tpb.id
+        where pi.del_flag = 0
+        <if test="param.categoryId != null">
+            and pi.category_id = #{param.categoryId}
+        </if>
+        <if test="param.brandId != null">
+            and pi.brand_id = #{param.brandId}
+        </if>
+        <if test="param.name != null and param.name != ''">
+            and pi.name like CONCAT('%',#{param.name},'%')
+        </if>
+        <if test="param.status != null">
+            and pi.status = #{param.status}
+        </if>
+        <if test="param.merchantId != null">
+            and pi.merchant_id = #{param.merchantId}
+        </if>
+    </select>
+
+    <select id="getIndexProductInfoList" resultType="com.yidian.shop.vo.ProductInfoVo">
+        select pi.id,
+        pi.bar_code,
+        pi.name,
+        pi.category_id,
+        pi.brand_id,
+        pi.merchant_id,
+        pi.keywords,
+        pi.status,
+        pi.sort_order,
+        pi.is_new,
+        pi.is_hot,
+        pi.advise_price,
+        pi.cost_price,
+        pi.sale_price,
+        pi.up_time,
+        pi.sale_count,
+        pi.create_time,
+        mu.merchant_name
+        from t_product_info pi
+        inner join t_merchant_user_info mu on pi.merchant_id = mu.id and mu.status = 1
+        where pi.del_flag = 0 and mu.del_flag = 0 and pi.status = 2
+        <if test="productType != null">
+            <if test="productType == 1">
+                and pi.is_new = 1
+            </if>
+            <if test="productType == 2">
+                and pi.is_hot = 1
+            </if>
+            <if test="productType == 3">
+                and pi.is_new = 0 and pi.is_hot = 0
+            </if>
+        </if>
+        order by pi.up_time desc, pi.create_time desc
+    </select>
+
+    <select id="getProductInfoListByCondition" resultType="com.yidian.shop.vo.ProductInfoVo">
+        select pi.id,
+        pi.bar_code,
+        pi.name,
+        pi.category_id,
+        pi.brand_id,
+        pi.merchant_id,
+        pi.keywords,
+        pi.status,
+        pi.sort_order,
+        pi.is_new,
+        pi.is_hot,
+        pi.advise_price,
+        pi.cost_price,
+        pi.sale_price,
+        pi.up_time,
+        pi.sale_count,
+        pi.create_time,
+        mu.merchant_name
+        from t_product_info pi
+        inner join t_merchant_user_info mu on pi.merchant_id = mu.id and mu.status = 1
+        where pi.del_flag = 0 and mu.del_flag = 0 and pi.status = 2
+        <if test="param.categoryId != null">
+            and pi.category_id = #{param.categoryId}
+        </if>
+        <if test="param.brandId != null">
+            and pi.brand_id = #{param.brandId}
+        </if>
+        <if test="param.merchantId != null">
+            and pi.merchant_id = #{param.merchantId}
+        </if>
+        <!--商品类型:1-新品，2-人气，3-默认-->
+        <if test="param.productType != null">
+            <if test="param.productType == 1">
+                and pi.is_new = 1
+            </if>
+            <if test="param.productType == 2">
+                and pi.is_hot = 1
+            </if>
+            <if test="param.productType == 3">
+                and pi.is_new = 0 and pi.is_hot = 0
+            </if>
+        </if>
+        <if test="param.searchKey != null and param.searchKey != ''">
+            and (pi.name like CONCAT('%',#{param.searchKey},'%') or pi.keywords like CONCAT('%',#{param.searchKey},'%'))
+        </if>
+        order by pi.up_time desc, pi.create_time desc
+    </select>
+</mapper>

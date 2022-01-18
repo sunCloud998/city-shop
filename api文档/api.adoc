@@ -1,0 +1,3324 @@
+= 接口文档
+:doctype: book
+:toc: left
+:toclevels: 3
+:toc-title: 目录
+:source-highlighter: highlightjs
+
+[%hardbreaks]
+version:1.0
+
+[%hardbreaks]
+api接口文档
+
+
+== 省市区获取接口
+
+=== 获取省市区列表
+请求
+[source,HTTP ]
+----
+GET /api/common/getAreaInfoList/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].name+|+String+|||+名字+
+|+data.[].code+|+String+|||+编码+
+|===
+
+
+== 用户公共接口
+
+=== 获取验证码
+请求
+[source,HTTP ]
+----
+POST /api/common/getAuthCode/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "phone" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+phone+|+String+|+NotBlank+||+电话号码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 文件上传
+请求
+[source,HTTP ]
+----
+POST /api/common/uploadImage/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+== 物流费配置接口
+
+=== 更新或者保存物流费配置信息
+请求
+[source,HTTP ]
+----
+POST /api/delivery/saveOrUpdateDeliveryFeeConfig/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "merchantId" : 0,
+  "deliveryAddress" : "",
+  "addressLon" : "",
+  "addressLat" : "",
+  "deliveryInstruction" : "",
+  "minOrderMoney" : 0,
+  "deliveryMoney" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+merchantId+|+Long+||+0+|+商家ID+
+|+deliveryAddress+|+String+|+NotBlank+||+配送地址+
+|+addressLon+|+String+|+NotBlank+||+配送地址经度+
+|+addressLat+|+String+|+NotBlank+||+配送地址纬度+
+|+deliveryInstruction+|+String+|||+配送说明+
+|+minOrderMoney+|+BigDecimal+|+NotNull+|+0+|+免运费订单最小金额+
+|+deliveryMoney+|+BigDecimal+|+NotNull+|+0+|+运费+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取物流费配置信息
+请求
+[source,HTTP ]
+----
+GET /api/delivery/getDeliveryFeeConfig/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+DeliveryFeeConfigVo+|||
+|+data.id+|+Long+||+0+|
+|+data.merchantId+|+Long+||+0+|+商家ID+
+|+data.deliveryAddress+|+String+|||+配送地址+
+|+data.addressLon+|+String+|||+配送地址经度+
+|+data.addressLat+|+String+|||+配送地址纬度+
+|+data.deliveryInstruction+|+String+|||+配送说明+
+|+data.minOrderMoney+|+BigDecimal+||+0+|+免运费订单最小金额+
+|+data.deliveryMoney+|+BigDecimal+||+0+|+运费+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+== 购物车表接口列表
+
+=== 添加购物车(直接购买也调用该接口添加)
+请求
+[source,HTTP ]
+----
+POST /api/cart/mall/addCartInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "productId" : 0,
+  "productSkuId" : 0,
+  "number" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+productId+|+Long+|+NotNull+|+0+|+商品ID+
+|+productSkuId+|+Long+|+NotNull+|+0+|+商品sku id+
+|+number+|+Integer+|+NotNull+|+0+|+购买数量+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+Long+||+null+|
+|===
+
+
+=== 修改购物车
+请求
+[source,HTTP ]
+----
+POST /api/cart/mall/updateCartInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "cartId" : 0,
+  "number" : 0,
+  "checked" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+cartId+|+Long+|+NotNull+|+0+|+购物车ID+
+|+number+|+Integer+|+NotNull+|+0+|+购买数量+
+|+checked+|+Integer+||+0+|+商品是否选中状态，1：选中+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 删除购物车商品
+请求
+[source,HTTP ]
+----
+GET /api/cart/mall/delCartInfo/{cartId}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+cartId+|+Long+|||+购物车ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取购物车商品列表
+请求
+[source,HTTP ]
+----
+GET /api/cart/mall/getCartInfoList/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.[].merchantName+|+String+|||+商家名称+
+|+data.[].merchantCityId+|+Integer+||+0+|+商家地址ID（用来判断配送方式）+
+|+data.[].deliveryFeeConfigVo+|+DeliveryFeeConfigVo+|||+物流费配置信息+
+|+data.[].deliveryFeeConfigVo.id+|+Long+||+0+|
+|+data.[].deliveryFeeConfigVo.merchantId+|+Long+||+0+|+商家ID+
+|+data.[].deliveryFeeConfigVo.deliveryAddress+|+String+|||+配送地址+
+|+data.[].deliveryFeeConfigVo.addressLon+|+String+|||+配送地址经度+
+|+data.[].deliveryFeeConfigVo.addressLat+|+String+|||+配送地址纬度+
+|+data.[].deliveryFeeConfigVo.deliveryInstruction+|+String+|||+配送说明+
+|+data.[].deliveryFeeConfigVo.minOrderMoney+|+BigDecimal+||+0+|+免运费订单最小金额+
+|+data.[].deliveryFeeConfigVo.deliveryMoney+|+BigDecimal+||+0+|+运费+
+|+data.[].deliveryFeeConfigVo.createTime+|+LocalDateTime+|||+创建时间+
+|+data.[].cartInfoList+|+List+|||+购物车商品列表+
+|+data.[].cartInfoList.[].id+|+Long+||+0+|+购物车ID+
+|+data.[].cartInfoList.[].userId+|+Long+||+0+|+用户ID+
+|+data.[].cartInfoList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.[].cartInfoList.[].productId+|+Long+||+0+|+商品ID+
+|+data.[].cartInfoList.[].barCode+|+String+|||+商品编号+
+|+data.[].cartInfoList.[].productName+|+String+|||+商品名称+
+|+data.[].cartInfoList.[].productSkuId+|+Long+||+0+|+商品sku ID+
+|+data.[].cartInfoList.[].price+|+BigDecimal+||+0+|+商品价格+
+|+data.[].cartInfoList.[].number+|+Integer+||+0+|+商品数量+
+|+data.[].cartInfoList.[].spec+|+String+|||+商品规格值列表，采用JSON数组格式+
+|+data.[].cartInfoList.[].checked+|+Integer+||+0+|+购物车中商品是否选择状态，1：选中+
+|+data.[].cartInfoList.[].invalid+|+Integer+||+0+|+商品是否失效，1：失效+
+|+data.[].cartInfoList.[].createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 清空购物车
+请求
+[source,HTTP ]
+----
+GET /api/cart/mall/clearCart/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+== 订单表接口列表
+
+=== 获取订单确认页数据
+请求
+[source,HTTP ]
+----
+POST /api/order/getOrderConfirmInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+[ 0 ]
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.[].merchantName+|+String+|||+商家名称+
+|+data.[].merchantCityId+|+Integer+||+0+|+商家地址ID（用来判断配送方式）+
+|+data.[].deliveryFeeConfigVo+|+DeliveryFeeConfigVo+|||+物流费配置信息+
+|+data.[].deliveryFeeConfigVo.id+|+Long+||+0+|
+|+data.[].deliveryFeeConfigVo.merchantId+|+Long+||+0+|+商家ID+
+|+data.[].deliveryFeeConfigVo.deliveryAddress+|+String+|||+配送地址+
+|+data.[].deliveryFeeConfigVo.addressLon+|+String+|||+配送地址经度+
+|+data.[].deliveryFeeConfigVo.addressLat+|+String+|||+配送地址纬度+
+|+data.[].deliveryFeeConfigVo.deliveryInstruction+|+String+|||+配送说明+
+|+data.[].deliveryFeeConfigVo.minOrderMoney+|+BigDecimal+||+0+|+免运费订单最小金额+
+|+data.[].deliveryFeeConfigVo.deliveryMoney+|+BigDecimal+||+0+|+运费+
+|+data.[].deliveryFeeConfigVo.createTime+|+LocalDateTime+|||+创建时间+
+|+data.[].cartInfoList+|+List+|||+购物车商品列表+
+|+data.[].cartInfoList.[].id+|+Long+||+0+|+购物车ID+
+|+data.[].cartInfoList.[].userId+|+Long+||+0+|+用户ID+
+|+data.[].cartInfoList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.[].cartInfoList.[].productId+|+Long+||+0+|+商品ID+
+|+data.[].cartInfoList.[].barCode+|+String+|||+商品编号+
+|+data.[].cartInfoList.[].productName+|+String+|||+商品名称+
+|+data.[].cartInfoList.[].productSkuId+|+Long+||+0+|+商品sku ID+
+|+data.[].cartInfoList.[].price+|+BigDecimal+||+0+|+商品价格+
+|+data.[].cartInfoList.[].number+|+Integer+||+0+|+商品数量+
+|+data.[].cartInfoList.[].spec+|+String+|||+商品规格值列表，采用JSON数组格式+
+|+data.[].cartInfoList.[].checked+|+Integer+||+0+|+购物车中商品是否选择状态，1：选中+
+|+data.[].cartInfoList.[].invalid+|+Integer+||+0+|+商品是否失效，1：失效+
+|+data.[].cartInfoList.[].createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 提交订单
+请求
+[source,HTTP ]
+----
+POST /api/order/commitOrderInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "cartIdList" : [ 0 ],
+  "orderType" : 0,
+  "reserveTime" : "",
+  "deliveryType" : 0,
+  "sourceType" : 0,
+  "receiveAddressId" : 0,
+  "note" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+cartIdList+|+List+|+NotEmpty+||+购物车ID列表，json数组+
+|+orderType+|+Integer+|+NotNull+|+0+|+订单类型，0：正常订单，1：预约订单+
+|+reserveTime+|+LocalDateTime+|||+预约时间,预约订单必填+
+|+deliveryType+|+Integer+|+NotNull+|+0+|+配送方式，0：快递，1：同城配送+
+|+sourceType+|+Integer+||+0+|+订单来源，0：pc，1：APP，2：h5+
+|+receiveAddressId+|+Long+|+NotNull+|+0+|+收货地址ID+
+|+note+|+String+|||+订单备注+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|===
+
+
+=== 取消订单
+请求
+[source,HTTP ]
+----
+POST /api/order/cancelOrder/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "orderNo" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|+NotBlank+||+订单编号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 删除订单
+请求
+[source,HTTP ]
+----
+POST /api/order/delOrder/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "orderNo" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|+NotBlank+||+订单编号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 关闭超时未支付订单
+请求
+[source,HTTP ]
+----
+GET /api/order/closeOrder/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 订单发货
+请求
+[source,HTTP ]
+----
+POST /api/order/orderDelivery/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "orderNo" : "",
+  "deliveryCompany" : "",
+  "deliveryNo" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|+NotBlank+||+订单号+
+|+deliveryCompany+|+String+|+NotBlank+||+物流公司+
+|+deliveryNo+|+String+|+NotBlank+||+物流单号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 订单收货
+请求
+[source,HTTP ]
+----
+GET /api/order/orderReceive/{orderNo}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|||+订单号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 订单自动完成
+请求
+[source,HTTP ]
+----
+GET /api/order/orderAutoComplete/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 订单列表查询
+请求
+[source,HTTP ]
+----
+POST /api/order/getOrderList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "orderNo" : "",
+  "status" : 0,
+  "orderType" : 0,
+  "deliveryType" : 0,
+  "userId" : 0,
+  "merchantId" : 0,
+  "startTime" : "",
+  "endTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+orderNo+|+String+|||+订单号+
+|+status+|+Integer+||+0+|+订单状态,0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->已取消+
+|+orderType+|+Integer+||+0+|+订单类型：0->正常订单；1->预约订单+
+|+deliveryType+|+Integer+||+0+|+配送方式，0->快递；1->同城配送+
+|+userId+|+Long+||+0+|+用户ID，不需要传，后台根据Token解析+
+|+merchantId+|+Long+||+0+|+商家ID，不需要传，后台根据Token解析+
+|+startTime+|+LocalDateTime+|||+开始时间+
+|+endTime+|+LocalDateTime+|||+结束时间+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "userId" : 0,
+  "userName" : "",
+  "merchantId" : 0,
+  "merchantName" : "",
+  "orderNo" : "",
+  "totalPrice" : 0,
+  "realPrice" : 0,
+  "deliveryPrice" : 0,
+  "status" : 0,
+  "statusStr" : "",
+  "orderType" : 0,
+  "orderTypeStr" : "",
+  "deliveryType" : 0,
+  "deliveryTypeStr" : "",
+  "deliveryCompany" : "",
+  "deliveryNo" : "",
+  "receiveAddressId" : 0,
+  "reserveTime" : "",
+  "note" : "",
+  "paymentTime" : "",
+  "deliveryTime" : "",
+  "receiveTime" : "",
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+订单id+
+|+userId+|+Long+||+0+|+用户ID+
+|+userName+|+String+|||+用户名称+
+|+merchantId+|+Long+||+0+|+商家ID+
+|+merchantName+|+String+|||+商家名称+
+|+orderNo+|+String+|||+订单编号+
+|+totalPrice+|+BigDecimal+||+0+|+订单总金额+
+|+realPrice+|+BigDecimal+||+0+|+实际支付金额+
+|+deliveryPrice+|+BigDecimal+||+0+|+运费金额+
+|+status+|+Integer+||+0+|+订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->已取消+
+|+statusStr+|+String+|||+订单状态名称+
+|+orderType+|+Integer+||+0+|+订单类型：0->正常订单；1->预约订单+
+|+orderTypeStr+|+String+|||+订单类型名称+
+|+deliveryType+|+Integer+||+0+|+配送方式，0->快递；1->同城配送+
+|+deliveryTypeStr+|+String+|||+配送方式名称+
+|+deliveryCompany+|+String+|||+物流公司+
+|+deliveryNo+|+String+|||+物流单号+
+|+receiveAddressId+|+Long+||+0+|+收货信息ID+
+|+reserveTime+|+LocalDateTime+|||+预约时间+
+|+note+|+String+|||+订单备注+
+|+paymentTime+|+LocalDateTime+|||+支付时间+
+|+deliveryTime+|+LocalDateTime+|||+发货时间+
+|+receiveTime+|+LocalDateTime+|||+确认收货时间+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 订单详情查询
+请求
+[source,HTTP ]
+----
+GET /api/order/getOrderDetail/{orderNo}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|||+订单号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+OrderDetailVo+|||
+|+data.id+|+Long+||+0+|+订单id+
+|+data.userId+|+Long+||+0+|+用户ID+
+|+data.userName+|+String+|||+用户名称+
+|+data.merchantId+|+Long+||+0+|+商家ID+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.orderNo+|+String+|||+订单编号+
+|+data.totalPrice+|+BigDecimal+||+0+|+订单总金额+
+|+data.realPrice+|+BigDecimal+||+0+|+实际支付金额+
+|+data.deliveryPrice+|+BigDecimal+||+0+|+运费金额+
+|+data.status+|+Integer+||+0+|+订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->已取消+
+|+data.statusStr+|+String+|||+订单状态名称+
+|+data.orderType+|+Integer+||+0+|+订单类型：0->正常订单；1->预约订单+
+|+data.orderTypeStr+|+String+|||+订单类型名称+
+|+data.deliveryType+|+Integer+||+0+|+配送方式，0->快递；1->同城配送+
+|+data.deliveryTypeStr+|+String+|||+配送方式名称+
+|+data.deliveryCompany+|+String+|||+物流公司+
+|+data.deliveryNo+|+String+|||+物流单号+
+|+data.receiveAddressId+|+Long+||+0+|+收货信息ID+
+|+data.reserveTime+|+LocalDateTime+|||+预约时间+
+|+data.note+|+String+|||+订单备注+
+|+data.paymentTime+|+LocalDateTime+|||+支付时间+
+|+data.deliveryTime+|+LocalDateTime+|||+发货时间+
+|+data.receiveTime+|+LocalDateTime+|||+确认收货时间+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|+data.orderProductList+|+List+|||+订单包含的商品列表+
+|+data.orderProductList.[].id+|+Long+||+0+|+购买的商品记录ID+
+|+data.orderProductList.[].userId+|+Long+||+0+|+用户ID+
+|+data.orderProductList.[].orderNo+|+String+|||+订单编号+
+|+data.orderProductList.[].productId+|+Long+||+0+|+商品ID+
+|+data.orderProductList.[].productSkuId+|+Long+||+0+|+商品sku ID+
+|+data.orderProductList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.orderProductList.[].merchantName+|+String+|||+商家名称+
+|+data.orderProductList.[].productPrice+|+BigDecimal+||+0+|+商品价格+
+|+data.orderProductList.[].buyAmount+|+Integer+||+0+|+购买数量+
+|+data.orderProductList.[].productBarCode+|+String+|||+商品编号+
+|+data.orderProductList.[].productName+|+String+|||+商品名称+
+|+data.orderProductList.[].productSpec+|+String+|||+商品规格值列表，采用JSON数组格式+
+|+data.orderProductList.[].createTime+|+LocalDateTime+|||+创建时间+
+|+data.orderProcessVoList+|+List+|||+订单进程列表+
+|+data.orderProcessVoList.[].id+|+Long+||+0+|+进程ID+
+|+data.orderProcessVoList.[].orderNo+|+String+|||+订单编号+
+|+data.orderProcessVoList.[].label+|+String+|||+标签+
+|+data.orderProcessVoList.[].content+|+String+|||+进程内容+
+|+data.orderProcessVoList.[].optUserName+|+String+|||+操作用户名称+
+|+data.orderProcessVoList.[].createTime+|+LocalDateTime+|||+创建时间+
+|+data.userAddressVo+|+UserAddressVo+|||+收货地址+
+|+data.userAddressVo.id+|+Long+||+0+|+收货地址ID+
+|+data.userAddressVo.receiveUserName+|+String+|||+收货人名称+
+|+data.userAddressVo.userId+|+Long+||+0+|+用户ID+
+|+data.userAddressVo.provinceId+|+Integer+||+0+|+省ID+
+|+data.userAddressVo.provinceName+|+String+|||+省名称+
+|+data.userAddressVo.cityId+|+Integer+||+0+|+市ID+
+|+data.userAddressVo.cityName+|+String+|||+市名称+
+|+data.userAddressVo.areaId+|+Integer+||+0+|+区县ID+
+|+data.userAddressVo.areaName+|+String+|||+区县名称+
+|+data.userAddressVo.address+|+String+|||+具体收货地址+
+|+data.userAddressVo.mobile+|+String+|||+手机号码+
+|+data.userAddressVo.isDefault+|+Integer+||+0+|+是否默认地址，1：默认地址+
+|+data.userAddressVo.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 获取订单进程
+请求
+[source,HTTP ]
+----
+GET /api/order/getOrderProcessInfo/{orderNo}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|||+订单号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].id+|+Long+||+0+|+进程ID+
+|+data.[].orderNo+|+String+|||+订单编号+
+|+data.[].label+|+String+|||+标签+
+|+data.[].content+|+String+|||+进程内容+
+|+data.[].optUserName+|+String+|||+操作用户名称+
+|+data.[].createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 获取收银台展示信息
+请求
+[source,HTTP ]
+----
+POST /api/order/getCashierInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+[ "" ]
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+CashierInfoVo+|||
+|+data.cashierInfoList+|+List+|||+待支付订单信息+
+|+data.cashierInfoList.[].orderNo+|+String+|||+订单号+
+|+data.cashierInfoList.[].orderPrice+|+BigDecimal+||+0+|+订单支付金额+
+|+data.cashierInfoList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.cashierInfoList.[].merchantName+|+String+|||+商家名称+
+|+data.cashierInfoList.[].endTime+|+LocalDateTime+|||+支付截止时间+
+|+data.totalPrice+|+BigDecimal+||+0+|+总支付金额+
+|===
+
+
+== 退款相关接口
+
+=== 获取退款原因列表
+请求
+[source,HTTP ]
+----
+GET /api/refund/getRefundReasonTagInfo/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].id+|+Long+||+0+|+退款原因ID+
+|+data.[].name+|+String+|||+退货类型+
+|===
+
+
+=== 退款申请
+请求
+[source,HTTP ]
+----
+POST /api/refund/refundApply/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "merchantId" : 0,
+  "productId" : 0,
+  "orderNo" : "",
+  "refundAmount" : 0,
+  "refundReason" : "",
+  "refundDescription" : "",
+  "remark" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+merchantId+|+Long+|+NotNull+|+0+|+商家id+
+|+productId+|+Long+|+NotNull+|+0+|+商品id+
+|+orderNo+|+String+|+NotBlank+||+订单编号+
+|+refundAmount+|+BigDecimal+||+0+|+退款金额+
+|+refundReason+|+String+|+NotBlank+||+退款原因+
+|+refundDescription+|+String+|||+描述描述+
+|+remark+|+String+|||+备注+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 取消退款
+请求
+[source,HTTP ]
+----
+GET /api/refund/refundCancel/{refundId}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+refundId+|+Long+|||+退款记录ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 退款审核
+请求
+[source,HTTP ]
+----
+POST /api/refund/refundExamine/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "refundId" : 0,
+  "examineType" : 0,
+  "remark" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+refundId+|+Long+|+NotNull+|+0+|+退款记录ID+
+|+examineType+|+Integer+|+NotNull+|+0+|+审核结果，1：通过，2：拒绝+
+|+remark+|+String+|||+备注+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 退货退款商品退回
+请求
+[source,HTTP ]
+----
+POST /api/refund/refundBack/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "refundId" : 0,
+  "refundDeliveryCompany" : "",
+  "refundDeliveryNo" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+refundId+|+Long+|+NotNull+|+0+|+退款单号+
+|+refundDeliveryCompany+|+String+|+NotBlank+||+退款物流公司+
+|+refundDeliveryNo+|+String+|+NotBlank+||+退款物流单号+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 退货退款退回商品收货
+请求
+[source,HTTP ]
+----
+POST /api/refund/refundReceive/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "refundId" : 0,
+  "optType" : 0,
+  "remark" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+refundId+|+Long+|+NotNull+|+0+|+退款订单ID+
+|+optType+|+Integer+||+0+|+操作类型，1：同意退款(默认)，2：拒绝退款+
+|+remark+|+String+|||+备注+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 退款列表查询
+请求
+[source,HTTP ]
+----
+POST /api/refund/getRefundList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "merchantId" : 0,
+  "userId" : 0,
+  "orderNo" : "",
+  "refundType" : 0,
+  "status" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+merchantId+|+Long+||+0+|+商家id+
+|+userId+|+Long+||+0+|+用户id+
+|+orderNo+|+String+|||+订单编号+
+|+refundType+|+Integer+||+0+|+退款类型，1-退款退货,2-仅退金额+
+|+status+|+Integer+||+0+|+申请状态：0->待处理；1->退货中；2->已完成；3->已拒绝+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "merchantId" : 0,
+  "merchantName" : "",
+  "userId" : 0,
+  "userName" : "",
+  "productId" : 0,
+  "productName" : "",
+  "orderNo" : "",
+  "refundType" : 0,
+  "refundTypeStr" : "",
+  "refundAmount" : 0,
+  "status" : 0,
+  "statusStr" : "",
+  "refundReason" : "",
+  "refundDescription" : "",
+  "refundDeliveryCompany" : "",
+  "refundDeliveryNo" : "",
+  "remark" : "",
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+退款ID+
+|+merchantId+|+Long+||+0+|+商家id+
+|+merchantName+|+String+|||+商家名称+
+|+userId+|+Long+||+0+|+用户id+
+|+userName+|+String+|||+用户名称+
+|+productId+|+Long+||+0+|+商品id+
+|+productName+|+String+|||+商品名称+
+|+orderNo+|+String+|||+订单编号+
+|+refundType+|+Integer+||+0+|+退款类型，1-退款退货,2-仅退金额+
+|+refundTypeStr+|+String+|||+退款类型名称+
+|+refundAmount+|+BigDecimal+||+0+|+退款金额+
+|+status+|+Integer+||+0+|+申请状态：0->待处理；1->退货中；2->已完成；3->已拒绝+
+|+statusStr+|+String+|||+状态名称+
+|+refundReason+|+String+|||+退款原因+
+|+refundDescription+|+String+|||+描述描述+
+|+refundDeliveryCompany+|+String+|||+退款物流公司+
+|+refundDeliveryNo+|+String+|||+退款物流单号+
+|+remark+|+String+|||+备注+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 退款详情查询
+请求
+[source,HTTP ]
+----
+GET /api/refund/getRefundDetail/{refundId}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+refundId+|+Long+|||+退款单ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+RefundDetailVo+|||
+|+data.id+|+Long+||+0+|+退款ID+
+|+data.merchantId+|+Long+||+0+|+商家id+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.userId+|+Long+||+0+|+用户id+
+|+data.userName+|+String+|||+用户名称+
+|+data.productId+|+Long+||+0+|+商品id+
+|+data.productName+|+String+|||+商品名称+
+|+data.orderNo+|+String+|||+订单编号+
+|+data.refundType+|+Integer+||+0+|+退款类型，1-退款退货,2-仅退金额+
+|+data.refundTypeStr+|+String+|||+退款类型名称+
+|+data.refundAmount+|+BigDecimal+||+0+|+退款金额+
+|+data.status+|+Integer+||+0+|+申请状态：0->待处理；1->退货中；2->已完成；3->已拒绝+
+|+data.statusStr+|+String+|||+状态名称+
+|+data.refundReason+|+String+|||+退款原因+
+|+data.refundDescription+|+String+|||+描述描述+
+|+data.refundDeliveryCompany+|+String+|||+退款物流公司+
+|+data.refundDeliveryNo+|+String+|||+退款物流单号+
+|+data.remark+|+String+|||+备注+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|+data.orderProductVo+|+OrderProductVo+|||+退款商品+
+|+data.orderProductVo.id+|+Long+||+0+|+购买的商品记录ID+
+|+data.orderProductVo.userId+|+Long+||+0+|+用户ID+
+|+data.orderProductVo.orderNo+|+String+|||+订单编号+
+|+data.orderProductVo.productId+|+Long+||+0+|+商品ID+
+|+data.orderProductVo.productSkuId+|+Long+||+0+|+商品sku ID+
+|+data.orderProductVo.merchantId+|+Long+||+0+|+商家ID+
+|+data.orderProductVo.merchantName+|+String+|||+商家名称+
+|+data.orderProductVo.productPrice+|+BigDecimal+||+0+|+商品价格+
+|+data.orderProductVo.buyAmount+|+Integer+||+0+|+购买数量+
+|+data.orderProductVo.productBarCode+|+String+|||+商品编号+
+|+data.orderProductVo.productName+|+String+|||+商品名称+
+|+data.orderProductVo.productSpec+|+String+|||+商品规格值列表，采用JSON数组格式+
+|+data.orderProductVo.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+== 收货地址表接口列表
+
+=== 添加或者修改用户收货地址
+请求
+[source,HTTP ]
+----
+POST /api/order/mall/configUserAddressInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id" : 0,
+  "receiveUserName" : "",
+  "provinceId" : 0,
+  "provinceName" : "",
+  "cityId" : 0,
+  "cityName" : "",
+  "areaId" : 0,
+  "areaName" : "",
+  "address" : "",
+  "mobile" : "",
+  "isDefault" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+收货地址ID+
+|+receiveUserName+|+String+|+NotBlank+||+收货人名称+
+|+provinceId+|+Integer+|+NotNull+|+0+|+省ID+
+|+provinceName+|+String+|+NotBlank+||+省名称+
+|+cityId+|+Integer+|+NotNull+|+0+|+市ID+
+|+cityName+|+String+|+NotBlank+||+市名称+
+|+areaId+|+Integer+|+NotNull+|+0+|+区县ID+
+|+areaName+|+String+|+NotBlank+||+区县名称+
+|+address+|+String+|+NotBlank+||+具体收货地址+
+|+mobile+|+String+|+NotBlank+||+手机号码+
+|+isDefault+|+Integer+||+0+|+是否默认地址，1：默认地址+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 删除用户收货地址
+请求
+[source,HTTP ]
+----
+GET /api/order/mall/delUserAddressInfo/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+收货地址ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取指定收货地址的详细信息
+请求
+[source,HTTP ]
+----
+GET /api/order/mall/getUserAddressDetailInfo/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+收货地址ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+UserAddressVo+|||
+|+data.id+|+Long+||+0+|+收货地址ID+
+|+data.receiveUserName+|+String+|||+收货人名称+
+|+data.userId+|+Long+||+0+|+用户ID+
+|+data.provinceId+|+Integer+||+0+|+省ID+
+|+data.provinceName+|+String+|||+省名称+
+|+data.cityId+|+Integer+||+0+|+市ID+
+|+data.cityName+|+String+|||+市名称+
+|+data.areaId+|+Integer+||+0+|+区县ID+
+|+data.areaName+|+String+|||+区县名称+
+|+data.address+|+String+|||+具体收货地址+
+|+data.mobile+|+String+|||+手机号码+
+|+data.isDefault+|+Integer+||+0+|+是否默认地址，1：默认地址+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 获取用户的地址列表
+请求
+[source,HTTP ]
+----
+GET /api/order/mall/getUserAddressList/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].id+|+Long+||+0+|+收货地址ID+
+|+data.[].receiveUserName+|+String+|||+收货人名称+
+|+data.[].userId+|+Long+||+0+|+用户ID+
+|+data.[].provinceId+|+Integer+||+0+|+省ID+
+|+data.[].provinceName+|+String+|||+省名称+
+|+data.[].cityId+|+Integer+||+0+|+市ID+
+|+data.[].cityName+|+String+|||+市名称+
+|+data.[].areaId+|+Integer+||+0+|+区县ID+
+|+data.[].areaName+|+String+|||+区县名称+
+|+data.[].address+|+String+|||+具体收货地址+
+|+data.[].mobile+|+String+|||+手机号码+
+|+data.[].isDefault+|+Integer+||+0+|+是否默认地址，1：默认地址+
+|+data.[].createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+== 支付宝支付接口列表
+
+=== 支付宝支付
+请求
+[source,HTTP ]
+----
+POST /api/aliPay/pay HTTP/1.1
+Content-Type: application/json
+
+{
+  "orderNo" : "",
+  "payType" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+orderNo+|+String+|+NotBlank+||+订单号+
+|+payType+|+Integer+|+NotNull+|+0+|+支付方式：0->未支付；1->微信；2->支付宝;3->paypal+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+== 微信支付接口列表
+
+=== wapPay
+请求
+[source,HTTP ]
+----
+POST /api/wxPay/wapPay HTTP/1.1
+
+----
+
+
+== 商品品牌管理接口
+
+=== 添加或者修改商品品牌
+请求
+[source,HTTP ]
+----
+POST /api/product/brand/saveOrUpdate/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id" : 0,
+  "name" : "",
+  "description" : "",
+  "logo" : "",
+  "sort" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+品牌ID+
+|+name+|+String+|+NotBlank+||+品牌名称+
+|+description+|+String+|||+品牌描述+
+|+logo+|+String+|||+LOGO地址+
+|+sort+|+Integer+||+0+|+排序+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 根据ID删除商品品牌
+请求
+[source,HTTP ]
+----
+GET /api/product/brand/delProductBrand/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+需要删除的商品品牌ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 根据ID查询商品品牌信息
+请求
+[source,HTTP ]
+----
+GET /api/product/brand/getProductBrand/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+需要查询的商品品牌对应的ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+ProductBrandVo+|||
+|+data.id+|+Long+||+0+|+商品品牌ID+
+|+data.name+|+String+|||+品牌名称+
+|+data.description+|+String+|||+品牌描述+
+|+data.logo+|+String+|||+LOGO地址+
+|+data.sort+|+Integer+||+0+|+排序+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 分页获取商品品牌列表
+请求
+[source,HTTP ]
+----
+POST /api/product/brand/getProductBrandList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "name" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+name+|+String+|||+商品品牌名称+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "name" : "",
+  "description" : "",
+  "logo" : "",
+  "sort" : 0,
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+商品品牌ID+
+|+name+|+String+|||+品牌名称+
+|+description+|+String+|||+品牌描述+
+|+logo+|+String+|||+LOGO地址+
+|+sort+|+Integer+||+0+|+排序+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+== 产品分类接口
+
+=== 添加或者修改产品分类
+请求
+[source,HTTP ]
+----
+POST /api/product/category/addOrUpdate/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id" : 0,
+  "parentId" : 0,
+  "name" : "",
+  "level" : 0,
+  "sort" : 0,
+  "icon" : "",
+  "keywords" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+分类ID+
+|+parentId+|+Long+||+0+|+父级分类的编号+
+|+name+|+String+|+NotBlank+||+商品分类名称+
+|+level+|+Integer+|+NotNull+|+0+|+分类级别：0->1级；1->2级+
+|+sort+|+Integer+||+0+|+排序+
+|+icon+|+String+|||+图标+
+|+keywords+|+String+|||+关键字+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取产品分类列表
+请求
+[source,HTTP ]
+----
+POST /api/product/category/getProductCategoryList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "parentId" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+parentId+|+Long+|+NotNull+|+0+|+父级分类ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "parentId" : 0,
+  "name" : "",
+  "level" : 0,
+  "sort" : 0,
+  "icon" : "",
+  "keywords" : "",
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+当前分类ID+
+|+parentId+|+Long+||+0+|+上级分类的编号：0表示一级分类+
+|+name+|+String+|||+分类名称+
+|+level+|+Integer+||+0+|+分类级别：0->1级；1->2级+
+|+sort+|+Integer+||+0+|+排序值+
+|+icon+|+String+|||+图标+
+|+keywords+|+String+|||+关键字+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 删除产品分类
+请求
+[source,HTTP ]
+----
+GET /api/product/category/delProductCategory/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+产品分类ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 根据分类ID获取对应的分类信息
+请求
+[source,HTTP ]
+----
+GET /api/product/category/getProductCategory/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+需要获取分类信息的ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+ProductCategoryVo+|||
+|+data.id+|+Long+||+0+|+当前分类ID+
+|+data.parentId+|+Long+||+0+|+上级分类的编号：0表示一级分类+
+|+data.name+|+String+|||+分类名称+
+|+data.level+|+Integer+||+0+|+分类级别：0->1级；1->2级+
+|+data.sort+|+Integer+||+0+|+排序值+
+|+data.icon+|+String+|||+图标+
+|+data.keywords+|+String+|||+关键字+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 获取树形结构的产品分类列表
+请求
+[source,HTTP ]
+----
+GET /api/product/category/getProductCategoryTree/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+List+|||
+|+data.[].id+|+Long+||+0+|+当前分类ID+
+|+data.[].parentId+|+Long+||+0+|+上级分类的编号：0表示一级分类+
+|+data.[].name+|+String+|||+分类名称+
+|===
+
+
+== 管理员商品相关接口
+
+=== 添加或者修改商品
+请求
+[source,HTTP ]
+----
+POST /api/product/admin/saveOrUpdate/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id" : 0,
+  "barCode" : "",
+  "name" : "",
+  "categoryId" : 0,
+  "brandId" : 0,
+  "keywords" : "",
+  "sortOrder" : 0,
+  "isNew" : 0,
+  "isHot" : 0,
+  "advisePrice" : 0,
+  "costPrice" : 0,
+  "salePrice" : 0,
+  "saleCount" : 0,
+  "images" : [ "" ],
+  "introduction" : "",
+  "detail" : "",
+  "productAttributeList" : [ {
+    "id" : 0,
+    "attribute" : "",
+    "value" : "",
+    "delFlag" : 0
+  } ],
+  "productSpecList" : [ {
+    "id" : 0,
+    "specName" : "",
+    "specValue" : "",
+    "imageUrl" : "",
+    "delFlag" : 0
+  } ],
+  "productSkuList" : [ {
+    "id" : 0,
+    "spec" : [ "" ],
+    "price" : 0,
+    "stock" : 0,
+    "imageUrl" : "",
+    "delFlag" : 0
+  } ]
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|
+|+barCode+|+String+|||+商品编号+
+|+name+|+String+|+NotBlank+||+商品名称+
+|+categoryId+|+Integer+|+NotNull+|+0+|+商品所属类目ID+
+|+brandId+|+Integer+|+NotNull+|+0+|+品牌ID+
+|+keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+sortOrder+|+Integer+||+0+|+排序值+
+|+isNew+|+Integer+||+0+|+是否新品首发+
+|+isHot+|+Integer+||+0+|+是否人气推荐+
+|+advisePrice+|+BigDecimal+|+NotNull+|+0+|+参考价格+
+|+costPrice+|+BigDecimal+|+NotNull+|+0+|+成本价格+
+|+salePrice+|+BigDecimal+|+NotNull+|+0+|+售卖价格+
+|+saleCount+|+Integer+||+0+|+销售总量+
+|+images+|+List+|||+商品宣传图片列表，采用JSON数组格式+
+|+introduction+|+String+|||+商品简介+
+|+detail+|+String+|+NotBlank+||+商品详细介绍，是富文本格式+
+|+productAttributeList+|+List+|||+参数列表+
+|+productAttributeList.[].id+|+Long+||+0+|
+|+productAttributeList.[].attribute+|+String+|||+商品参数名称+
+|+productAttributeList.[].value+|+String+|||+商品参数值+
+|+productAttributeList.[].delFlag+|+Integer+||+0+|+删除标识：0默认，1删除+
+|+productSpecList+|+List+|||+规格列表+
+|+productSpecList.[].id+|+Long+||+0+|
+|+productSpecList.[].specName+|+String+|||+商品规格名称+
+|+productSpecList.[].specValue+|+String+|||+商品规格值+
+|+productSpecList.[].imageUrl+|+String+|||+商品规格图片+
+|+productSpecList.[].delFlag+|+Integer+||+0+|+删除标识：0默认，1删除+
+|+productSkuList+|+List+|||+sku列表+
+|+productSkuList.[].id+|+Long+||+0+|
+|+productSkuList.[].spec+|+List+|||+商品规格值列表，采用JSON数组格式+
+|+productSkuList.[].price+|+BigDecimal+||+0+|+商品货品价格+
+|+productSkuList.[].stock+|+Integer+||+0+|+商品货品数量+
+|+productSkuList.[].imageUrl+|+String+|||+商品货品图片+
+|+productSkuList.[].delFlag+|+Integer+||+0+|+删除标识：0默认，1删除+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 查询商品所有信息，更新或者查看商品详情可以调用该方法
+请求
+[source,HTTP ]
+----
+GET /api/product/admin/getProductAllInfo/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+商品ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+ProductAllInfoVo+|||
+|+data.id+|+Long+||+0+|
+|+data.barCode+|+String+|||+商品编号+
+|+data.name+|+String+|||+商品名称+
+|+data.categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+data.categoryName+|+String+|||+分类名称+
+|+data.brandId+|+Integer+||+0+|+品牌ID+
+|+data.brandName+|+String+|||+品牌名称+
+|+data.merchantId+|+Long+||+0+|+商家ID+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+data.status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+data.sortOrder+|+Integer+||+0+|+排序值+
+|+data.isNew+|+Integer+||+0+|+是否新品首发+
+|+data.isHot+|+Integer+||+0+|+是否人气推荐+
+|+data.advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+data.costPrice+|+BigDecimal+||+0+|+成本价格+
+|+data.salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+data.upTime+|+LocalDateTime+|||+上架时间+
+|+data.saleCount+|+Integer+||+0+|+销售总量+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|+data.images+|+List+|||+商品宣传图片列表，采用JSON数组格式+
+|+data.introduction+|+String+|||+商品简介+
+|+data.detail+|+String+|||+商品详细介绍，是富文本格式+
+|+data.deliveryFeeConfigVo+|+DeliveryFeeConfigVo+|||+商家物流费配置信息+
+|+data.deliveryFeeConfigVo.id+|+Long+||+0+|
+|+data.deliveryFeeConfigVo.merchantId+|+Long+||+0+|+商家ID+
+|+data.deliveryFeeConfigVo.deliveryAddress+|+String+|||+配送地址+
+|+data.deliveryFeeConfigVo.addressLon+|+String+|||+配送地址经度+
+|+data.deliveryFeeConfigVo.addressLat+|+String+|||+配送地址纬度+
+|+data.deliveryFeeConfigVo.deliveryInstruction+|+String+|||+配送说明+
+|+data.deliveryFeeConfigVo.minOrderMoney+|+BigDecimal+||+0+|+免运费订单最小金额+
+|+data.deliveryFeeConfigVo.deliveryMoney+|+BigDecimal+||+0+|+运费+
+|+data.deliveryFeeConfigVo.createTime+|+LocalDateTime+|||+创建时间+
+|+data.productAttributeList+|+List+|||+商品参数列表+
+|+data.productAttributeList.[].id+|+Long+||+0+|+商品参数ID+
+|+data.productAttributeList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productAttributeList.[].attribute+|+String+|||+商品参数名称+
+|+data.productAttributeList.[].value+|+String+|||+商品参数值+
+|+data.productSpecList+|+List+|||+商品规格列表+
+|+data.productSpecList.[].id+|+Long+||+0+|+商品规格ID+
+|+data.productSpecList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productSpecList.[].specName+|+String+|||+商品规格名称+
+|+data.productSpecList.[].specValue+|+String+|||+商品规格值+
+|+data.productSpecList.[].imageUrl+|+String+|||+商品规格图片+
+|+data.productSkuList+|+List+|||+商品sku列表+
+|+data.productSkuList.[].id+|+Long+||+0+|+商品sku ID+
+|+data.productSkuList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productSkuList.[].spec+|+List+|||+商品规格值列表，采用JSON数组格式+
+|+data.productSkuList.[].price+|+BigDecimal+||+0+|+商品货品价格+
+|+data.productSkuList.[].stock+|+Integer+||+0+|+商品货品数量+
+|+data.productSkuList.[].imageUrl+|+String+|||+商品货品图片+
+|===
+
+
+=== 商品列表查询
+请求
+[source,HTTP ]
+----
+POST /api/product/admin/getProductInfoList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "categoryId" : 0,
+  "brandId" : 0,
+  "name" : "",
+  "status" : 0,
+  "merchantId" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+categoryId+|+Integer+||+0+|+分类ID+
+|+brandId+|+Integer+||+0+|+品牌ID+
+|+name+|+String+|||+商品名称+
+|+status+|+Integer+||+0+|+商品状态+
+|+merchantId+|+Long+||+0+|+供应商ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "barCode" : "",
+  "name" : "",
+  "categoryId" : 0,
+  "categoryName" : "",
+  "brandId" : 0,
+  "brandName" : "",
+  "merchantId" : 0,
+  "merchantName" : "",
+  "keywords" : "",
+  "status" : 0,
+  "sortOrder" : 0,
+  "isNew" : 0,
+  "isHot" : 0,
+  "advisePrice" : 0,
+  "costPrice" : 0,
+  "salePrice" : 0,
+  "upTime" : "",
+  "saleCount" : 0,
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|
+|+barCode+|+String+|||+商品编号+
+|+name+|+String+|||+商品名称+
+|+categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+categoryName+|+String+|||+分类名称+
+|+brandId+|+Integer+||+0+|+品牌ID+
+|+brandName+|+String+|||+品牌名称+
+|+merchantId+|+Long+||+0+|+商家ID+
+|+merchantName+|+String+|||+商家名称+
+|+keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+sortOrder+|+Integer+||+0+|+排序值+
+|+isNew+|+Integer+||+0+|+是否新品首发+
+|+isHot+|+Integer+||+0+|+是否人气推荐+
+|+advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+costPrice+|+BigDecimal+||+0+|+成本价格+
+|+salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+upTime+|+LocalDateTime+|||+上架时间+
+|+saleCount+|+Integer+||+0+|+销售总量+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 商品状态变更接口
+请求
+[source,HTTP ]
+----
+POST /api/product/admin/productChangeStatus/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id" : 0,
+  "status" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|+NotNull+|+0+|+商品id+
+|+status+|+Integer+|+NotNull+|+0+|+商品状态，1-待上架，2-上架，3-下架+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+== 商城商品相关接口
+
+=== 获取首页默认数据
+请求
+[source,HTTP ]
+----
+GET /api/product/mall/getIndexProductInfo/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+ProductIndexVo+|||
+|+data.hotProductList+|+List+|||+人气推荐商品列表+
+|+data.hotProductList.[].id+|+Long+||+0+|
+|+data.hotProductList.[].barCode+|+String+|||+商品编号+
+|+data.hotProductList.[].name+|+String+|||+商品名称+
+|+data.hotProductList.[].categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+data.hotProductList.[].categoryName+|+String+|||+分类名称+
+|+data.hotProductList.[].brandId+|+Integer+||+0+|+品牌ID+
+|+data.hotProductList.[].brandName+|+String+|||+品牌名称+
+|+data.hotProductList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.hotProductList.[].merchantName+|+String+|||+商家名称+
+|+data.hotProductList.[].keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+data.hotProductList.[].status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+data.hotProductList.[].sortOrder+|+Integer+||+0+|+排序值+
+|+data.hotProductList.[].isNew+|+Integer+||+0+|+是否新品首发+
+|+data.hotProductList.[].isHot+|+Integer+||+0+|+是否人气推荐+
+|+data.hotProductList.[].advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+data.hotProductList.[].costPrice+|+BigDecimal+||+0+|+成本价格+
+|+data.hotProductList.[].salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+data.hotProductList.[].upTime+|+LocalDateTime+|||+上架时间+
+|+data.hotProductList.[].saleCount+|+Integer+||+0+|+销售总量+
+|+data.hotProductList.[].createTime+|+LocalDateTime+|||+创建时间+
+|+data.newProductList+|+List+|||+新品商品列表+
+|+data.newProductList.[].id+|+Long+||+0+|
+|+data.newProductList.[].barCode+|+String+|||+商品编号+
+|+data.newProductList.[].name+|+String+|||+商品名称+
+|+data.newProductList.[].categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+data.newProductList.[].categoryName+|+String+|||+分类名称+
+|+data.newProductList.[].brandId+|+Integer+||+0+|+品牌ID+
+|+data.newProductList.[].brandName+|+String+|||+品牌名称+
+|+data.newProductList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.newProductList.[].merchantName+|+String+|||+商家名称+
+|+data.newProductList.[].keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+data.newProductList.[].status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+data.newProductList.[].sortOrder+|+Integer+||+0+|+排序值+
+|+data.newProductList.[].isNew+|+Integer+||+0+|+是否新品首发+
+|+data.newProductList.[].isHot+|+Integer+||+0+|+是否人气推荐+
+|+data.newProductList.[].advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+data.newProductList.[].costPrice+|+BigDecimal+||+0+|+成本价格+
+|+data.newProductList.[].salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+data.newProductList.[].upTime+|+LocalDateTime+|||+上架时间+
+|+data.newProductList.[].saleCount+|+Integer+||+0+|+销售总量+
+|+data.newProductList.[].createTime+|+LocalDateTime+|||+创建时间+
+|+data.defaultProductList+|+List+|||+默认商品列表+
+|+data.defaultProductList.[].id+|+Long+||+0+|
+|+data.defaultProductList.[].barCode+|+String+|||+商品编号+
+|+data.defaultProductList.[].name+|+String+|||+商品名称+
+|+data.defaultProductList.[].categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+data.defaultProductList.[].categoryName+|+String+|||+分类名称+
+|+data.defaultProductList.[].brandId+|+Integer+||+0+|+品牌ID+
+|+data.defaultProductList.[].brandName+|+String+|||+品牌名称+
+|+data.defaultProductList.[].merchantId+|+Long+||+0+|+商家ID+
+|+data.defaultProductList.[].merchantName+|+String+|||+商家名称+
+|+data.defaultProductList.[].keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+data.defaultProductList.[].status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+data.defaultProductList.[].sortOrder+|+Integer+||+0+|+排序值+
+|+data.defaultProductList.[].isNew+|+Integer+||+0+|+是否新品首发+
+|+data.defaultProductList.[].isHot+|+Integer+||+0+|+是否人气推荐+
+|+data.defaultProductList.[].advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+data.defaultProductList.[].costPrice+|+BigDecimal+||+0+|+成本价格+
+|+data.defaultProductList.[].salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+data.defaultProductList.[].upTime+|+LocalDateTime+|||+上架时间+
+|+data.defaultProductList.[].saleCount+|+Integer+||+0+|+销售总量+
+|+data.defaultProductList.[].createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 分页查询指定条件商品列表
+请求
+[source,HTTP ]
+----
+POST /api/product/mall/getAreaProductInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "categoryId" : 0,
+  "brandId" : 0,
+  "merchantId" : 0,
+  "productType" : 0,
+  "searchKey" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+categoryId+|+Integer+||+0+|+商品分类+
+|+brandId+|+Integer+||+0+|+商品品牌+
+|+merchantId+|+Long+||+0+|+供应商ID+
+|+productType+|+Integer+||+0+|+商品类型，1-新品，2-人气，3-默认+
+|+searchKey+|+String+|||+搜索关键词+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "barCode" : "",
+  "name" : "",
+  "categoryId" : 0,
+  "categoryName" : "",
+  "brandId" : 0,
+  "brandName" : "",
+  "merchantId" : 0,
+  "merchantName" : "",
+  "keywords" : "",
+  "status" : 0,
+  "sortOrder" : 0,
+  "isNew" : 0,
+  "isHot" : 0,
+  "advisePrice" : 0,
+  "costPrice" : 0,
+  "salePrice" : 0,
+  "upTime" : "",
+  "saleCount" : 0,
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|
+|+barCode+|+String+|||+商品编号+
+|+name+|+String+|||+商品名称+
+|+categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+categoryName+|+String+|||+分类名称+
+|+brandId+|+Integer+||+0+|+品牌ID+
+|+brandName+|+String+|||+品牌名称+
+|+merchantId+|+Long+||+0+|+商家ID+
+|+merchantName+|+String+|||+商家名称+
+|+keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+sortOrder+|+Integer+||+0+|+排序值+
+|+isNew+|+Integer+||+0+|+是否新品首发+
+|+isHot+|+Integer+||+0+|+是否人气推荐+
+|+advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+costPrice+|+BigDecimal+||+0+|+成本价格+
+|+salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+upTime+|+LocalDateTime+|||+上架时间+
+|+saleCount+|+Integer+||+0+|+销售总量+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 获取商城商品详情
+请求
+[source,HTTP ]
+----
+GET /api/product/mall/getProductDetailInfo/{id}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+|||+商品ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+ProductAllInfoVo+|||
+|+data.id+|+Long+||+0+|
+|+data.barCode+|+String+|||+商品编号+
+|+data.name+|+String+|||+商品名称+
+|+data.categoryId+|+Integer+||+0+|+商品所属类目ID+
+|+data.categoryName+|+String+|||+分类名称+
+|+data.brandId+|+Integer+||+0+|+品牌ID+
+|+data.brandName+|+String+|||+品牌名称+
+|+data.merchantId+|+Long+||+0+|+商家ID+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.keywords+|+String+|||+商品关键字，采用逗号间隔+
+|+data.status+|+Integer+||+0+|+商品状态，1-待上架，2-上架，3-下架+
+|+data.sortOrder+|+Integer+||+0+|+排序值+
+|+data.isNew+|+Integer+||+0+|+是否新品首发+
+|+data.isHot+|+Integer+||+0+|+是否人气推荐+
+|+data.advisePrice+|+BigDecimal+||+0+|+参考价格+
+|+data.costPrice+|+BigDecimal+||+0+|+成本价格+
+|+data.salePrice+|+BigDecimal+||+0+|+售卖价格+
+|+data.upTime+|+LocalDateTime+|||+上架时间+
+|+data.saleCount+|+Integer+||+0+|+销售总量+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|+data.images+|+List+|||+商品宣传图片列表，采用JSON数组格式+
+|+data.introduction+|+String+|||+商品简介+
+|+data.detail+|+String+|||+商品详细介绍，是富文本格式+
+|+data.deliveryFeeConfigVo+|+DeliveryFeeConfigVo+|||+商家物流费配置信息+
+|+data.deliveryFeeConfigVo.id+|+Long+||+0+|
+|+data.deliveryFeeConfigVo.merchantId+|+Long+||+0+|+商家ID+
+|+data.deliveryFeeConfigVo.deliveryAddress+|+String+|||+配送地址+
+|+data.deliveryFeeConfigVo.addressLon+|+String+|||+配送地址经度+
+|+data.deliveryFeeConfigVo.addressLat+|+String+|||+配送地址纬度+
+|+data.deliveryFeeConfigVo.deliveryInstruction+|+String+|||+配送说明+
+|+data.deliveryFeeConfigVo.minOrderMoney+|+BigDecimal+||+0+|+免运费订单最小金额+
+|+data.deliveryFeeConfigVo.deliveryMoney+|+BigDecimal+||+0+|+运费+
+|+data.deliveryFeeConfigVo.createTime+|+LocalDateTime+|||+创建时间+
+|+data.productAttributeList+|+List+|||+商品参数列表+
+|+data.productAttributeList.[].id+|+Long+||+0+|+商品参数ID+
+|+data.productAttributeList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productAttributeList.[].attribute+|+String+|||+商品参数名称+
+|+data.productAttributeList.[].value+|+String+|||+商品参数值+
+|+data.productSpecList+|+List+|||+商品规格列表+
+|+data.productSpecList.[].id+|+Long+||+0+|+商品规格ID+
+|+data.productSpecList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productSpecList.[].specName+|+String+|||+商品规格名称+
+|+data.productSpecList.[].specValue+|+String+|||+商品规格值+
+|+data.productSpecList.[].imageUrl+|+String+|||+商品规格图片+
+|+data.productSkuList+|+List+|||+商品sku列表+
+|+data.productSkuList.[].id+|+Long+||+0+|+商品sku ID+
+|+data.productSkuList.[].productId+|+Long+||+0+|+商品表的商品ID+
+|+data.productSkuList.[].spec+|+List+|||+商品规格值列表，采用JSON数组格式+
+|+data.productSkuList.[].price+|+BigDecimal+||+0+|+商品货品价格+
+|+data.productSkuList.[].stock+|+Integer+||+0+|+商品货品数量+
+|+data.productSkuList.[].imageUrl+|+String+|||+商品货品图片+
+|===
+
+
+== 管理员用户接口
+
+=== 添加管理员
+请求
+[source,HTTP ]
+----
+POST /api/user/admin/addAdminUser/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "phone" : "",
+  "userName" : "",
+  "password" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+phone+|+String+|+NotBlank+||+登录手机号+
+|+userName+|+String+|+NotBlank+||+用户名+
+|+password+|+String+|||+密码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 管理登录
+请求
+[source,HTTP ]
+----
+POST /api/user/admin/login/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "phone" : "",
+  "password" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+phone+|+String+|+NotBlank+||+登录手机号+
+|+password+|+String+|+NotBlank+||+登录密码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取登录的管理员用户信息
+请求
+[source,HTTP ]
+----
+GET /api/user/admin/getLoginAdminUserInfo/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+AdminUserInfoVo+|||
+|+data.id+|+Long+||+0+|+管理员用户ID+
+|+data.phone+|+String+|||+手机号+
+|+data.userName+|+String+|||+用户名+
+|+data.status+|+Integer+||+0+|+帐号启用状态:0-禁用；1-启用+
+|+data.icon+|+String+|||+头像+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+== 商家用户接口
+
+=== 供应商注册
+请求
+[source,HTTP ]
+----
+POST /api/user/merchant/register/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "authCode" : "",
+  "phone" : "",
+  "merchantName" : "",
+  "password" : "",
+  "merchantAddress" : "",
+  "introduction" : "",
+  "contactName" : "",
+  "contactMobile" : "",
+  "provinceName" : "",
+  "provinceId" : 0,
+  "cityName" : "",
+  "cityId" : 0,
+  "district" : "",
+  "districtId" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+authCode+|+String+|+NotBlank+||+验证码+
+|+phone+|+String+|+NotBlank+||+手机号+
+|+merchantName+|+String+|+NotBlank+||+商家名称+
+|+password+|+String+|+NotBlank+||+密码+
+|+merchantAddress+|+String+|+NotBlank+||+商家地址+
+|+introduction+|+String+|+NotBlank+||+商家简介+
+|+contactName+|+String+|+NotBlank+||+联系人名字+
+|+contactMobile+|+String+|||+联系人电话+
+|+provinceName+|+String+|||+商家地址(省)+
+|+provinceId+|+Integer+||+0+|+商家地址(省id)+
+|+cityName+|+String+|||+商家地址(市)+
+|+cityId+|+Integer+||+0+|+商家地址(市id)+
+|+district+|+String+|||+商家地址(区)+
+|+districtId+|+Integer+||+0+|+商家地址(区id)+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 供应商登录
+请求
+[source,HTTP ]
+----
+POST /api/user/merchant/login/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "phone" : "",
+  "password" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+phone+|+String+|+NotBlank+||+登录手机号+
+|+password+|+String+|+NotBlank+||+登录密码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取登录的供应商信息
+请求
+[source,HTTP ]
+----
+GET /api/user/merchant/getLoginMerchantUserInfo/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+MerchantUserInfoVo+|||
+|+data.id+|+Long+||+0+|+供应商ID+
+|+data.phone+|+String+|||+手机号+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.merchantAddress+|+String+|||+商家地址+
+|+data.logo+|+String+|||+商家logo+
+|+data.introduction+|+String+|||+商家简介+
+|+data.contactName+|+String+|||+联系人名字+
+|+data.contactMobile+|+String+|||+联系人电话+
+|+data.merchantScore+|+BigDecimal+||+0+|+商家评分+
+|+data.merchantWeight+|+BigDecimal+||+0+|+商家权重+
+|+data.status+|+Integer+||+0+|+帐号启用状态:0-待审核；1-审核通过；2-审核拒绝；3-禁用+
+|+data.statusStr+|+String+|||+状态名称+
+|+data.provinceName+|+String+|||+商家地址(省)+
+|+data.provinceId+|+Integer+||+0+|+商家地址(省id)+
+|+data.cityName+|+String+|||+商家地址(市)+
+|+data.cityId+|+Integer+||+0+|+商家地址(市id)+
+|+data.district+|+String+|||+商家地址(区)+
+|+data.districtId+|+Integer+||+0+|+商家地址(区id)+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 根据供应商ID查询供应商信息
+请求
+[source,HTTP ]
+----
+GET /api/user/merchant/getMerchantUserInfo/{merchantId}? HTTP/1.1
+
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+merchantId+|+Long+|||+供应商ID+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+MerchantUserInfoVo+|||
+|+data.id+|+Long+||+0+|+供应商ID+
+|+data.phone+|+String+|||+手机号+
+|+data.merchantName+|+String+|||+商家名称+
+|+data.merchantAddress+|+String+|||+商家地址+
+|+data.logo+|+String+|||+商家logo+
+|+data.introduction+|+String+|||+商家简介+
+|+data.contactName+|+String+|||+联系人名字+
+|+data.contactMobile+|+String+|||+联系人电话+
+|+data.merchantScore+|+BigDecimal+||+0+|+商家评分+
+|+data.merchantWeight+|+BigDecimal+||+0+|+商家权重+
+|+data.status+|+Integer+||+0+|+帐号启用状态:0-待审核；1-审核通过；2-审核拒绝；3-禁用+
+|+data.statusStr+|+String+|||+状态名称+
+|+data.provinceName+|+String+|||+商家地址(省)+
+|+data.provinceId+|+Integer+||+0+|+商家地址(省id)+
+|+data.cityName+|+String+|||+商家地址(市)+
+|+data.cityId+|+Integer+||+0+|+商家地址(市id)+
+|+data.district+|+String+|||+商家地址(区)+
+|+data.districtId+|+Integer+||+0+|+商家地址(区id)+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 供应商列表查询
+请求
+[source,HTTP ]
+----
+POST /api/user/merchant/getMerchantList/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "pageNumber" : 0,
+  "pageSize" : 0,
+  "phone" : "",
+  "merchantName" : "",
+  "status" : 0
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+pageNumber+|+Integer+|+NotNull+|+0+|+当前页+
+|+pageSize+|+Integer+|+NotNull+|+0+|+每页记录条数+
+|+phone+|+String+|||+手机号+
+|+merchantName+|+String+|||+供应商名称+
+|+status+|+Integer+||+0+|+状态 0待审核，1启用，2禁用+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "id" : 0,
+  "phone" : "",
+  "merchantName" : "",
+  "merchantAddress" : "",
+  "logo" : "",
+  "introduction" : "",
+  "contactName" : "",
+  "contactMobile" : "",
+  "merchantScore" : 0,
+  "merchantWeight" : 0,
+  "status" : 0,
+  "statusStr" : "",
+  "provinceName" : "",
+  "provinceId" : 0,
+  "cityName" : "",
+  "cityId" : 0,
+  "district" : "",
+  "districtId" : 0,
+  "createTime" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+id+|+Long+||+0+|+供应商ID+
+|+phone+|+String+|||+手机号+
+|+merchantName+|+String+|||+商家名称+
+|+merchantAddress+|+String+|||+商家地址+
+|+logo+|+String+|||+商家logo+
+|+introduction+|+String+|||+商家简介+
+|+contactName+|+String+|||+联系人名字+
+|+contactMobile+|+String+|||+联系人电话+
+|+merchantScore+|+BigDecimal+||+0+|+商家评分+
+|+merchantWeight+|+BigDecimal+||+0+|+商家权重+
+|+status+|+Integer+||+0+|+帐号启用状态:0-待审核；1-审核通过；2-审核拒绝；3-禁用+
+|+statusStr+|+String+|||+状态名称+
+|+provinceName+|+String+|||+商家地址(省)+
+|+provinceId+|+Integer+||+0+|+商家地址(省id)+
+|+cityName+|+String+|||+商家地址(市)+
+|+cityId+|+Integer+||+0+|+商家地址(市id)+
+|+district+|+String+|||+商家地址(区)+
+|+districtId+|+Integer+||+0+|+商家地址(区id)+
+|+createTime+|+LocalDateTime+|||+创建时间+
+|===
+
+
+=== 供应商状态变更
+[%hardbreaks]
+0-待审核；1-审核通过；2-审核拒绝；3-禁用
+
+请求
+[source,HTTP ]
+----
+POST /api/user/merchant/changeMerchantStatusInfo/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "merchantId" : 0,
+  "status" : 0,
+  "remark" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+merchantId+|+Long+|+NotNull+|+0+|+供应商ID+
+|+status+|+Integer+|+NotNull+|+0+|+状态，0-待审核；1-审核通过；2-审核拒绝；3-禁用+
+|+remark+|+String+|||+操作备注+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+== 商城用户接口
+
+=== 用户注册
+请求
+[source,HTTP ]
+----
+POST /api/user/mall/register/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "userName" : "",
+  "password" : "",
+  "confirmPassword" : "",
+  "phone" : "",
+  "authCode" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+userName+|+String+|+NotBlank+||+用户名+
+|+password+|+String+|+NotBlank+||+密码+
+|+confirmPassword+|+String+|+NotBlank+||+确认密码+
+|+phone+|+String+|+NotBlank+||+手机号+
+|+authCode+|+String+|+NotBlank+||+验证码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 用户登录
+请求
+[source,HTTP ]
+----
+POST /api/user/mall/login/v1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "phone" : "",
+  "password" : ""
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+phone+|+String+|+NotBlank+||+手机号+
+|+password+|+String+|+NotBlank+||+登录密码+
+|===
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+String+||+null+|
+|===
+
+
+=== 获取登录商城的用户信息
+请求
+[source,HTTP ]
+----
+GET /api/user/mall/getLoginUserInfo/v1 HTTP/1.1
+
+----
+
+响应
+[source,HTTP ]
+----
+HTTP/1.1 200 OK
+
+{
+  "code" : "0",
+  "msg" : "",
+  "userMsg" : "",
+  "data" : "null"
+}
+----
+
+[options="header"]
+|===
+|+名称+|+类型+|+校验+|+默认+|+描述+
+|+code+|+int+||+0+|
+|+msg+|+String+|||
+|+userMsg+|+String+|||
+|+data+|+UserInfo+|||
+|+data.id+|+Long+||+0+|
+|+data.userName+|+String+|||+用户名+
+|+data.phone+|+String+|||+手机号码+
+|+data.password+|+String+|||+密码+
+|+data.status+|+Integer+||+0+|+帐号启用状态:0-禁用；1-启用+
+|+data.icon+|+String+|||+头像+
+|+data.createTime+|+LocalDateTime+|||+创建时间+
+|+data.updateTime+|+LocalDateTime+|||+修改时间+
+|+data.delFlag+|+Boolean+|||+逻辑删除标志+
+|===
+

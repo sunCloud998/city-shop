@@ -1,0 +1,60 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/city_mall?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    max-wait: 10000
+    min-idle: 5
+    max-active: 10
+    initial-size: 10
+    maximum-pool-size: 20
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      connection-timeout: 30000
+      maximum-pool-size: 50
+      max-lifetime: 1800000
+      minimum-idle: 5
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: root
+    jedis:
+      pool:
+        max-active: 128
+        max-idle: 16
+        min-idle: 0
+    timeout: 10s
+
+logging:
+  config: classpath:log/log4j2-test.xml
+
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: xxxxx
+    accessKeySecret: xxxxxx
+    bucketName: yidian-shop-mall
+    fileDir: shop-mall/
+
+delivery:
+  gaoDe:
+    key: xxxxxxxxx
+    distanceUrl: https://restapi.amap.com/v3/distance
+
+#pay:
+#  ali:
+#    appId: 2016100100643105
+#    privateKey: alipay/production/live_private.pem
+#    aliPayCertPath: alipay/production/live_ali_public.pem
+#    appCertPath: alipay/certs/appCertPublicKey_2016100100643105.crt
+#    aliPayRootCertPath: alipay/certs/alipayRootCert.crt
+#    serverUrl: https://openapi.alipay.com/gateway.do
+#    domain: http://api.shop.imis.tv/shop-doc
+#  wx:
+#    appId: wx2fc30d737d3cbca2
+#    mchId: 1614536109
+#    partnerKey: z1cGAqZoGisBRVR7cUpJSM6OjXrrVR3k
+#    certPath: wxpay/apiclient_cert.p12
+#    domain: http://api.shop.imis.tv/shop-doc

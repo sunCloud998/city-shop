@@ -1,0 +1,15 @@
+pay:
+  ali:
+    appId: xxxx
+    privateKey: alipay/production/live_private.pem
+    aliPayCertPath: alipay/production/live_ali_public.pem
+    appCertPath: alipay/certs/appCertPublicKey_2016100100643105.crt
+    aliPayRootCertPath: alipay/certs/alipayRootCert.crt
+    serverUrl: https://openapi.alipay.com/gateway.do
+    domain: http://api.shop.imis.tv/shop-doc
+  wx:
+    appId: xxxx
+    mchId: xxxxx
+    partnerKey: z1cGAqZoGisBRVR7cUpJSM6OjXrrVR3k
+    certPath: wxpay/apiclient_cert.p12
+    domain: http://api.shop.imis.tv/shop-doc

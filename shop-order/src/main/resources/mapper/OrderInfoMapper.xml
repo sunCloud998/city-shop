@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidian.shop.mapper.OrderInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yidian.shop.entity.OrderInfo">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="merchant_id" property="merchantId"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="total_price" property="totalPrice"/>
+        <result column="real_price" property="realPrice"/>
+        <result column="delivery_price" property="deliveryPrice"/>
+        <result column="source_type" property="sourceType"/>
+        <result column="status" property="status"/>
+        <result column="order_type" property="orderType"/>
+        <result column="delivery_type" property="deliveryType"/>
+        <result column="delivery_company" property="deliveryCompany"/>
+        <result column="delivery_no" property="deliveryNo"/>
+        <result column="receive_address_id" property="receiveAddressId"/>
+        <result column="note" property="note"/>
+        <result column="payment_time" property="paymentTime"/>
+        <result column="delivery_time" property="deliveryTime"/>
+        <result column="receive_time" property="receiveTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, merchant_id, order_no, total_price, real_price, delivery_price, source_type, status, order_type,
+        delivery_type, delivery_company, delivery_no, receive_address_id, note, payment_time, delivery_time,
+        receive_time, create_time, update_time, del_flag
+    </sql>
+
+    <select id="getOrderListPage" resultType="com.yidian.shop.vo.OrderInfoVo">
+        select
+        oi.id,
+        oi.user_id,
+        ui.user_name,
+        oi.merchant_id,
+        mui.merchant_name,
+        oi.order_no,
+        oi.total_price,
+        oi.real_price,
+        oi.delivery_price,
+        oi.status,
+        oi.order_type,
+        oi.delivery_type,
+        oi.delivery_company,
+        oi.delivery_no,
+        oi.receive_address_id,
+        oi.note,
+        oi.payment_time,
+        oi.delivery_time,
+        oi.receive_time,
+        oi.create_time
+        from t_order_info oi
+        left join t_merchant_user_info mui on oi.merchant_id = mui.id
+        left join t_user_info ui on oi.user_id = ui.id
+        where oi.del_flag = 0
+        <if test="param.orderNo != null and param.orderNo != ''">
+            and oi.order_no = #{param.orderNo}
+        </if>
+        <if test="param.status != null">
+            and oi.status = #{param.status}
+        </if>
+        <if test="param.orderType != null">
+            and oi.order_type = #{param.orderType}
+        </if>
+        <if test="param.deliveryType != null">
+            and oi.delivery_type = #{param.deliveryType}
+        </if>
+        <if test="param.userId != null">
+            and oi.user_id = #{param.userId}
+        </if>
+        <if test="param.merchantId != null">
+            and oi.merchant_id = #{param.merchantId}
+        </if>
+        <if test="param.endTime != null and param.endTime != null">
+            and oi.create_time between #{param.startTime} and #{param.endTime}
+        </if>
+        order by oi.update_time desc
+    </select>
+</mapper>

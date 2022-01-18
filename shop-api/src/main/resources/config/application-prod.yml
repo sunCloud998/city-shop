@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/city_mall?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    max-wait: 10000
+    min-idle: 5
+    max-active: 50
+    initial-size: 10
+    maximum-pool-size: 50
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      connection-timeout: 30000
+      maximum-pool-size: 50
+      max-lifetime: 1800000
+      minimum-idle: 5
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: root
+    jedis:
+      pool:
+        max-active: 128
+        max-idle: 16
+        min-idle: 0
+    timeout: 10s
+
+logging:
+  config: classpath:log/log4j2-prod.xml
+
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: xxxx
+    accessKeySecret: xxxx
+    bucketName: yidian-shop-mall
+    fileDir: shop-mall/
+
+delivery:
+  gaoDe:
+    key: xxxxxx
+    distanceUrl: https://restapi.amap.com/v3/distance

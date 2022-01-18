@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidian.shop.mapper.OrderProductVersionMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yidian.shop.entity.OrderProductVersion">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_sku_id" property="productSkuId"/>
+        <result column="merchant_id" property="merchantId"/>
+        <result column="merchant_name" property="merchantName"/>
+        <result column="product_price" property="productPrice"/>
+        <result column="buy_amount" property="buyAmount"/>
+        <result column="product_bar_code" property="productBarCode"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_spec" property="productSpec"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, order_no, product_id, product_sku_id, merchant_id, merchant_name, product_price, buy_amount,
+        product_bar_code, product_name, product_spec, create_time, update_time, del_flag
+    </sql>
+</mapper>

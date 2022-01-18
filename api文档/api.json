@@ -1,0 +1,3502 @@
+{
+  "info": {
+    "name": "接口文档",
+    "_postman_id": "api",
+    "description": "api接口文档",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "省市区获取接口",
+      "item": [
+        {
+          "id": "7a394663-1577-41ef-9f74-7f08c0957d7d",
+          "name": "获取省市区列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/common/getAreaInfoList/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/common/getAreaInfoList/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "用户公共接口",
+      "item": [
+        {
+          "id": "1068c34b-e308-4444-8995-8a9dab0de02c",
+          "name": "获取验证码",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/common/getAuthCode/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/common/getAuthCode/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "7b4a01c4-d955-4a6c-9a67-2c9c5ea38802",
+          "name": "文件上传",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/common/uploadImage/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/common/uploadImage/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "物流费配置接口",
+      "item": [
+        {
+          "id": "b81811a5-81d5-43c3-850f-0b84d9a1249b",
+          "name": "更新或者保存物流费配置信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/delivery/saveOrUpdateDeliveryFeeConfig/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantId\" : 0,\n  \"deliveryAddress\" : \"\",\n  \"addressLon\" : \"\",\n  \"addressLat\" : \"\",\n  \"deliveryInstruction\" : \"\",\n  \"minOrderMoney\" : 0,\n  \"deliveryMoney\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/delivery/saveOrUpdateDeliveryFeeConfig/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\" : 0,\n  \"deliveryAddress\" : \"\",\n  \"addressLon\" : \"\",\n  \"addressLat\" : \"\",\n  \"deliveryInstruction\" : \"\",\n  \"minOrderMoney\" : 0,\n  \"deliveryMoney\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "bdb4ef9c-ce3a-40d7-8dcd-ac0db6e51af6",
+          "name": "获取物流费配置信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/delivery/getDeliveryFeeConfig/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/delivery/getDeliveryFeeConfig/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "购物车表接口列表",
+      "item": [
+        {
+          "id": "44cf364c-8a45-448e-8d7f-6def0e7d0388",
+          "name": "添加购物车(直接购买也调用该接口添加)",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/cart/mall/addCartInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\" : 0,\n  \"productSkuId\" : 0,\n  \"number\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/cart/mall/addCartInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productId\" : 0,\n  \"productSkuId\" : 0,\n  \"number\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "237d3b8d-1b69-4114-be17-2401fd55c384",
+          "name": "修改购物车",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/cart/mall/updateCartInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartId\" : 0,\n  \"number\" : 0,\n  \"checked\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/cart/mall/updateCartInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\" : 0,\n  \"number\" : 0,\n  \"checked\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "789d6331-2ebe-46da-82fd-3f27ce8546c4",
+          "name": "删除购物车商品",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/cart/mall/delCartInfo/{cartId}",
+              "query": [
+                {
+                  "key": "cartId",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/cart/mall/delCartInfo/{cartId}",
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "fec5aaa0-89c3-4462-a00c-14e5a7d56004",
+          "name": "获取购物车商品列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/cart/mall/getCartInfoList/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/cart/mall/getCartInfoList/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "a1bbf0ef-e2e0-4a25-9cf9-13935b0757dc",
+          "name": "清空购物车",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/cart/mall/clearCart/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/cart/mall/clearCart/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "订单表接口列表",
+      "item": [
+        {
+          "id": "94bfa683-bbd0-4a11-8def-11e33a7c822f",
+          "name": "获取订单确认页数据",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/getOrderConfirmInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[ 0 ]",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/getOrderConfirmInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[ 0 ]",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "5255f01e-ccee-4837-8985-d83d3423002b",
+          "name": "提交订单",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/commitOrderInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartIdList\" : [ 0 ],\n  \"orderType\" : 0,\n  \"reserveTime\" : \"\",\n  \"deliveryType\" : 0,\n  \"sourceType\" : 0,\n  \"receiveAddressId\" : 0,\n  \"note\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/commitOrderInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartIdList\" : [ 0 ],\n  \"orderType\" : 0,\n  \"reserveTime\" : \"\",\n  \"deliveryType\" : 0,\n  \"sourceType\" : 0,\n  \"receiveAddressId\" : 0,\n  \"note\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "eab3dbac-1241-449f-b411-66dbd536eacd",
+          "name": "取消订单",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/cancelOrder/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNo\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/cancelOrder/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNo\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "0d470240-50f8-4c7c-91ce-64a07b9731e9",
+          "name": "删除订单",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/delOrder/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNo\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/delOrder/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNo\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "e2266cd2-debc-4639-b866-c8df3a1c2a08",
+          "name": "关闭超时未支付订单",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/closeOrder/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/closeOrder/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "4fe685db-9ac5-40b1-9058-ecd6f0228d9d",
+          "name": "订单发货",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/orderDelivery/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNo\" : \"\",\n  \"deliveryCompany\" : \"\",\n  \"deliveryNo\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/orderDelivery/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNo\" : \"\",\n  \"deliveryCompany\" : \"\",\n  \"deliveryNo\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "4d9b3419-279c-49cc-b930-d24444b7d824",
+          "name": "订单收货",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/orderReceive/{orderNo}",
+              "query": [
+                {
+                  "key": "orderNo",
+                  "type": "String",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/orderReceive/{orderNo}",
+                  "query": [
+                    {
+                      "key": "orderNo",
+                      "type": "String",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "650c2edd-1c44-415c-82b4-51e23c387329",
+          "name": "订单自动完成",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/orderAutoComplete/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/orderAutoComplete/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "66769849-a4f8-4e74-912a-92546299e6ab",
+          "name": "订单列表查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/getOrderList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"orderNo\" : \"\",\n  \"status\" : 0,\n  \"orderType\" : 0,\n  \"deliveryType\" : 0,\n  \"userId\" : 0,\n  \"merchantId\" : 0,\n  \"startTime\" : \"\",\n  \"endTime\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/getOrderList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"orderNo\" : \"\",\n  \"status\" : 0,\n  \"orderType\" : 0,\n  \"deliveryType\" : 0,\n  \"userId\" : 0,\n  \"merchantId\" : 0,\n  \"startTime\" : \"\",\n  \"endTime\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"userId\" : 0,\n  \"userName\" : \"\",\n  \"merchantId\" : 0,\n  \"merchantName\" : \"\",\n  \"orderNo\" : \"\",\n  \"totalPrice\" : 0,\n  \"realPrice\" : 0,\n  \"deliveryPrice\" : 0,\n  \"status\" : 0,\n  \"statusStr\" : \"\",\n  \"orderType\" : 0,\n  \"orderTypeStr\" : \"\",\n  \"deliveryType\" : 0,\n  \"deliveryTypeStr\" : \"\",\n  \"deliveryCompany\" : \"\",\n  \"deliveryNo\" : \"\",\n  \"receiveAddressId\" : 0,\n  \"reserveTime\" : \"\",\n  \"note\" : \"\",\n  \"paymentTime\" : \"\",\n  \"deliveryTime\" : \"\",\n  \"receiveTime\" : \"\",\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "73d1b296-d291-41b1-a0af-9e73831eb934",
+          "name": "订单详情查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/getOrderDetail/{orderNo}",
+              "query": [
+                {
+                  "key": "orderNo",
+                  "type": "String",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/getOrderDetail/{orderNo}",
+                  "query": [
+                    {
+                      "key": "orderNo",
+                      "type": "String",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "25eb985a-1b41-41c6-905f-8102ff750c2c",
+          "name": "获取订单进程",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/getOrderProcessInfo/{orderNo}",
+              "query": [
+                {
+                  "key": "orderNo",
+                  "type": "String",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/getOrderProcessInfo/{orderNo}",
+                  "query": [
+                    {
+                      "key": "orderNo",
+                      "type": "String",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "742a30cc-346a-402d-89d5-d0b589e5a4aa",
+          "name": "获取收银台展示信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/getCashierInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[ \"\" ]",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/getCashierInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[ \"\" ]",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "退款相关接口",
+      "item": [
+        {
+          "id": "9165a9f6-db82-457d-84cc-a6e42ccba2a9",
+          "name": "获取退款原因列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/getRefundReasonTagInfo/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/getRefundReasonTagInfo/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "b48241c5-95af-4589-b8b5-216458eaa03f",
+          "name": "退款申请",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/refundApply/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantId\" : 0,\n  \"productId\" : 0,\n  \"orderNo\" : \"\",\n  \"refundAmount\" : 0,\n  \"refundReason\" : \"\",\n  \"refundDescription\" : \"\",\n  \"remark\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/refundApply/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\" : 0,\n  \"productId\" : 0,\n  \"orderNo\" : \"\",\n  \"refundAmount\" : 0,\n  \"refundReason\" : \"\",\n  \"refundDescription\" : \"\",\n  \"remark\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "562f1af1-a616-4b2b-8f6c-b488e9335a88",
+          "name": "取消退款",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/refundCancel/{refundId}",
+              "query": [
+                {
+                  "key": "refundId",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/refundCancel/{refundId}",
+                  "query": [
+                    {
+                      "key": "refundId",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "679447da-52a9-497e-8999-ac6aafca247a",
+          "name": "退款审核",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/refundExamine/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refundId\" : 0,\n  \"examineType\" : 0,\n  \"remark\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/refundExamine/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refundId\" : 0,\n  \"examineType\" : 0,\n  \"remark\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "8c367964-de24-4dd0-9d61-b22ad5b01d88",
+          "name": "退货退款商品退回",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/refundBack/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refundId\" : 0,\n  \"refundDeliveryCompany\" : \"\",\n  \"refundDeliveryNo\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/refundBack/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refundId\" : 0,\n  \"refundDeliveryCompany\" : \"\",\n  \"refundDeliveryNo\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "7a420bd3-e76e-40a0-85d9-657a3c1d825c",
+          "name": "退货退款退回商品收货",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/refundReceive/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refundId\" : 0,\n  \"optType\" : 0,\n  \"remark\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/refundReceive/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refundId\" : 0,\n  \"optType\" : 0,\n  \"remark\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "e2e96a36-b8f3-426c-9d81-c7912499cdc5",
+          "name": "退款列表查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/getRefundList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"merchantId\" : 0,\n  \"userId\" : 0,\n  \"orderNo\" : \"\",\n  \"refundType\" : 0,\n  \"status\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/getRefundList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"merchantId\" : 0,\n  \"userId\" : 0,\n  \"orderNo\" : \"\",\n  \"refundType\" : 0,\n  \"status\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"merchantId\" : 0,\n  \"merchantName\" : \"\",\n  \"userId\" : 0,\n  \"userName\" : \"\",\n  \"productId\" : 0,\n  \"productName\" : \"\",\n  \"orderNo\" : \"\",\n  \"refundType\" : 0,\n  \"refundTypeStr\" : \"\",\n  \"refundAmount\" : 0,\n  \"status\" : 0,\n  \"statusStr\" : \"\",\n  \"refundReason\" : \"\",\n  \"refundDescription\" : \"\",\n  \"refundDeliveryCompany\" : \"\",\n  \"refundDeliveryNo\" : \"\",\n  \"remark\" : \"\",\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "c96b3e2e-c60c-4711-b8f5-623a13766cb7",
+          "name": "退款详情查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/refund/getRefundDetail/{refundId}",
+              "query": [
+                {
+                  "key": "refundId",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/refund/getRefundDetail/{refundId}",
+                  "query": [
+                    {
+                      "key": "refundId",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "收货地址表接口列表",
+      "item": [
+        {
+          "id": "5c92fd7f-28cc-4807-84b1-9a12af4e37b8",
+          "name": "添加或者修改用户收货地址",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/mall/configUserAddressInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\" : 0,\n  \"receiveUserName\" : \"\",\n  \"provinceId\" : 0,\n  \"provinceName\" : \"\",\n  \"cityId\" : 0,\n  \"cityName\" : \"\",\n  \"areaId\" : 0,\n  \"areaName\" : \"\",\n  \"address\" : \"\",\n  \"mobile\" : \"\",\n  \"isDefault\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/mall/configUserAddressInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\" : 0,\n  \"receiveUserName\" : \"\",\n  \"provinceId\" : 0,\n  \"provinceName\" : \"\",\n  \"cityId\" : 0,\n  \"cityName\" : \"\",\n  \"areaId\" : 0,\n  \"areaName\" : \"\",\n  \"address\" : \"\",\n  \"mobile\" : \"\",\n  \"isDefault\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "902c25a5-1ff7-4fad-8bc2-3295154e8bc7",
+          "name": "删除用户收货地址",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/mall/delUserAddressInfo/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/mall/delUserAddressInfo/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "d812a3a5-a258-4b5c-acd0-907134377453",
+          "name": "获取指定收货地址的详细信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/mall/getUserAddressDetailInfo/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/mall/getUserAddressDetailInfo/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "099f3ac9-3941-4bd9-a84b-d1fa4bae56a8",
+          "name": "获取用户的地址列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/order/mall/getUserAddressList/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/order/mall/getUserAddressList/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "支付宝支付接口列表",
+      "item": [
+        {
+          "id": "6a966e26-bebf-4b7d-813e-969613870b36",
+          "name": "支付宝支付",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/aliPay/pay",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNo\" : \"\",\n  \"payType\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/aliPay/pay",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderNo\" : \"\",\n  \"payType\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "<p>",
+      "description": "用户余额信息表 前端控制器\n</p>",
+      "item": []
+    },
+    {
+      "name": "微信支付接口列表",
+      "item": [
+        {
+          "id": "81678e52-dbea-4f66-aa37-7a9bc2f04bfd",
+          "name": "wapPay",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/wxPay/wapPay",
+              "query": []
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/wxPay/wapPay",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "null",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "商品品牌管理接口",
+      "item": [
+        {
+          "id": "0c49a6a4-f604-4f39-84f7-cdbb6162b3fc",
+          "name": "添加或者修改商品品牌",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/brand/saveOrUpdate/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\" : 0,\n  \"name\" : \"\",\n  \"description\" : \"\",\n  \"logo\" : \"\",\n  \"sort\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/brand/saveOrUpdate/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\" : 0,\n  \"name\" : \"\",\n  \"description\" : \"\",\n  \"logo\" : \"\",\n  \"sort\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "cca2f218-9c6b-4134-9e46-77e605c77a9c",
+          "name": "根据ID删除商品品牌",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/brand/delProductBrand/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/brand/delProductBrand/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "8bc6d816-c934-4fea-92bf-510033b39ec6",
+          "name": "根据ID查询商品品牌信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/brand/getProductBrand/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/brand/getProductBrand/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "f660d977-b328-482b-9c3f-89e46c8a8669",
+          "name": "分页获取商品品牌列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/brand/getProductBrandList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"name\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/brand/getProductBrandList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"name\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"name\" : \"\",\n  \"description\" : \"\",\n  \"logo\" : \"\",\n  \"sort\" : 0,\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "产品分类接口",
+      "item": [
+        {
+          "id": "4651a6a0-32bc-4256-bbb1-017647cf3abc",
+          "name": "添加或者修改产品分类",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/category/addOrUpdate/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\" : 0,\n  \"parentId\" : 0,\n  \"name\" : \"\",\n  \"level\" : 0,\n  \"sort\" : 0,\n  \"icon\" : \"\",\n  \"keywords\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/category/addOrUpdate/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\" : 0,\n  \"parentId\" : 0,\n  \"name\" : \"\",\n  \"level\" : 0,\n  \"sort\" : 0,\n  \"icon\" : \"\",\n  \"keywords\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "e4297812-b121-494c-9df8-14d195858888",
+          "name": "获取产品分类列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/category/getProductCategoryList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"parentId\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/category/getProductCategoryList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"parentId\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"parentId\" : 0,\n  \"name\" : \"\",\n  \"level\" : 0,\n  \"sort\" : 0,\n  \"icon\" : \"\",\n  \"keywords\" : \"\",\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "c05b36f0-955e-4760-a7f5-224ef07a54c8",
+          "name": "删除产品分类",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/category/delProductCategory/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/category/delProductCategory/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "b7bd4532-a7cf-4604-96fe-d71cb00cf21f",
+          "name": "根据分类ID获取对应的分类信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/category/getProductCategory/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/category/getProductCategory/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "9f63a22f-2cbd-4c25-8605-e63229d2d07d",
+          "name": "获取树形结构的产品分类列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/category/getProductCategoryTree/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/category/getProductCategoryTree/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "管理员商品相关接口",
+      "item": [
+        {
+          "id": "5c217354-b59a-4c6a-8398-6541f64f31f6",
+          "name": "添加或者修改商品",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/admin/saveOrUpdate/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\" : 0,\n  \"barCode\" : \"\",\n  \"name\" : \"\",\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"keywords\" : \"\",\n  \"sortOrder\" : 0,\n  \"isNew\" : 0,\n  \"isHot\" : 0,\n  \"advisePrice\" : 0,\n  \"costPrice\" : 0,\n  \"salePrice\" : 0,\n  \"saleCount\" : 0,\n  \"images\" : [ \"\" ],\n  \"introduction\" : \"\",\n  \"detail\" : \"\",\n  \"productAttributeList\" : [ {\n    \"id\" : 0,\n    \"attribute\" : \"\",\n    \"value\" : \"\",\n    \"delFlag\" : 0\n  } ],\n  \"productSpecList\" : [ {\n    \"id\" : 0,\n    \"specName\" : \"\",\n    \"specValue\" : \"\",\n    \"imageUrl\" : \"\",\n    \"delFlag\" : 0\n  } ],\n  \"productSkuList\" : [ {\n    \"id\" : 0,\n    \"spec\" : [ \"\" ],\n    \"price\" : 0,\n    \"stock\" : 0,\n    \"imageUrl\" : \"\",\n    \"delFlag\" : 0\n  } ]\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/admin/saveOrUpdate/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\" : 0,\n  \"barCode\" : \"\",\n  \"name\" : \"\",\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"keywords\" : \"\",\n  \"sortOrder\" : 0,\n  \"isNew\" : 0,\n  \"isHot\" : 0,\n  \"advisePrice\" : 0,\n  \"costPrice\" : 0,\n  \"salePrice\" : 0,\n  \"saleCount\" : 0,\n  \"images\" : [ \"\" ],\n  \"introduction\" : \"\",\n  \"detail\" : \"\",\n  \"productAttributeList\" : [ {\n    \"id\" : 0,\n    \"attribute\" : \"\",\n    \"value\" : \"\",\n    \"delFlag\" : 0\n  } ],\n  \"productSpecList\" : [ {\n    \"id\" : 0,\n    \"specName\" : \"\",\n    \"specValue\" : \"\",\n    \"imageUrl\" : \"\",\n    \"delFlag\" : 0\n  } ],\n  \"productSkuList\" : [ {\n    \"id\" : 0,\n    \"spec\" : [ \"\" ],\n    \"price\" : 0,\n    \"stock\" : 0,\n    \"imageUrl\" : \"\",\n    \"delFlag\" : 0\n  } ]\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "a0e59347-8467-48f6-96c4-aa0db6b2cea2",
+          "name": "查询商品所有信息，更新或者查看商品详情可以调用该方法",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/admin/getProductAllInfo/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/admin/getProductAllInfo/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "75c9b0a7-b2ff-4106-9989-fbb050b3ad68",
+          "name": "商品列表查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/admin/getProductInfoList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"name\" : \"\",\n  \"status\" : 0,\n  \"merchantId\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/admin/getProductInfoList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"name\" : \"\",\n  \"status\" : 0,\n  \"merchantId\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"barCode\" : \"\",\n  \"name\" : \"\",\n  \"categoryId\" : 0,\n  \"categoryName\" : \"\",\n  \"brandId\" : 0,\n  \"brandName\" : \"\",\n  \"merchantId\" : 0,\n  \"merchantName\" : \"\",\n  \"keywords\" : \"\",\n  \"status\" : 0,\n  \"sortOrder\" : 0,\n  \"isNew\" : 0,\n  \"isHot\" : 0,\n  \"advisePrice\" : 0,\n  \"costPrice\" : 0,\n  \"salePrice\" : 0,\n  \"upTime\" : \"\",\n  \"saleCount\" : 0,\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "c2a113d3-87d4-49c0-9e7e-be9d41e07c77",
+          "name": "商品状态变更接口",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/admin/productChangeStatus/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\" : 0,\n  \"status\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/admin/productChangeStatus/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\" : 0,\n  \"status\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "商城商品相关接口",
+      "item": [
+        {
+          "id": "b2ea1a0e-81d4-4b0c-a8a7-911d90a776ef",
+          "name": "获取首页默认数据",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/mall/getIndexProductInfo/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/mall/getIndexProductInfo/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "a70e5ecb-06c8-482a-b681-d65683aec06b",
+          "name": "分页查询指定条件商品列表",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/mall/getAreaProductInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"merchantId\" : 0,\n  \"productType\" : 0,\n  \"searchKey\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/mall/getAreaProductInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"categoryId\" : 0,\n  \"brandId\" : 0,\n  \"merchantId\" : 0,\n  \"productType\" : 0,\n  \"searchKey\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"barCode\" : \"\",\n  \"name\" : \"\",\n  \"categoryId\" : 0,\n  \"categoryName\" : \"\",\n  \"brandId\" : 0,\n  \"brandName\" : \"\",\n  \"merchantId\" : 0,\n  \"merchantName\" : \"\",\n  \"keywords\" : \"\",\n  \"status\" : 0,\n  \"sortOrder\" : 0,\n  \"isNew\" : 0,\n  \"isHot\" : 0,\n  \"advisePrice\" : 0,\n  \"costPrice\" : 0,\n  \"salePrice\" : 0,\n  \"upTime\" : \"\",\n  \"saleCount\" : 0,\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "331a90ae-dbc5-4088-8d68-235aa28f9c2d",
+          "name": "获取商城商品详情",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/product/mall/getProductDetailInfo/{id}",
+              "query": [
+                {
+                  "key": "id",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/product/mall/getProductDetailInfo/{id}",
+                  "query": [
+                    {
+                      "key": "id",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "管理员用户接口",
+      "item": [
+        {
+          "id": "a49f6ef6-9f16-4d94-9972-293cf9627945",
+          "name": "添加管理员",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/admin/addAdminUser/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\" : \"\",\n  \"userName\" : \"\",\n  \"password\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/admin/addAdminUser/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\" : \"\",\n  \"userName\" : \"\",\n  \"password\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "6a40d951-1af5-4c4b-a8bc-31224f597940",
+          "name": "管理登录",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/admin/login/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/admin/login/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "2fd1664c-0202-4dfa-a62c-007b3eca6ebc",
+          "name": "获取登录的管理员用户信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/admin/getLoginAdminUserInfo/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/admin/getLoginAdminUserInfo/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "商家用户接口",
+      "item": [
+        {
+          "id": "8ddfbb70-6b1c-46d0-a4d2-d19da73105b0",
+          "name": "供应商注册",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/register/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authCode\" : \"\",\n  \"phone\" : \"\",\n  \"merchantName\" : \"\",\n  \"password\" : \"\",\n  \"merchantAddress\" : \"\",\n  \"introduction\" : \"\",\n  \"contactName\" : \"\",\n  \"contactMobile\" : \"\",\n  \"provinceName\" : \"\",\n  \"provinceId\" : 0,\n  \"cityName\" : \"\",\n  \"cityId\" : 0,\n  \"district\" : \"\",\n  \"districtId\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/register/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authCode\" : \"\",\n  \"phone\" : \"\",\n  \"merchantName\" : \"\",\n  \"password\" : \"\",\n  \"merchantAddress\" : \"\",\n  \"introduction\" : \"\",\n  \"contactName\" : \"\",\n  \"contactMobile\" : \"\",\n  \"provinceName\" : \"\",\n  \"provinceId\" : 0,\n  \"cityName\" : \"\",\n  \"cityId\" : 0,\n  \"district\" : \"\",\n  \"districtId\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "174e2acb-90c7-4a4d-9284-5a538a82008f",
+          "name": "供应商登录",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/login/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/login/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "74a46a43-abb5-489d-b31d-36916f3bc1e2",
+          "name": "获取登录的供应商信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/getLoginMerchantUserInfo/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/getLoginMerchantUserInfo/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "0842da9f-f83b-4aec-a688-afcd5abe12ec",
+          "name": "根据供应商ID查询供应商信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/getMerchantUserInfo/{merchantId}",
+              "query": [
+                {
+                  "key": "merchantId",
+                  "type": "Long",
+                  "value": "",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/getMerchantUserInfo/{merchantId}",
+                  "query": [
+                    {
+                      "key": "merchantId",
+                      "type": "Long",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "c332cb71-ae41-4ca8-9342-6f0108bbe2e7",
+          "name": "供应商列表查询",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/getMerchantList/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"phone\" : \"\",\n  \"merchantName\" : \"\",\n  \"status\" : 0\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/getMerchantList/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pageNumber\" : 0,\n  \"pageSize\" : 0,\n  \"phone\" : \"\",\n  \"merchantName\" : \"\",\n  \"status\" : 0\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"id\" : 0,\n  \"phone\" : \"\",\n  \"merchantName\" : \"\",\n  \"merchantAddress\" : \"\",\n  \"logo\" : \"\",\n  \"introduction\" : \"\",\n  \"contactName\" : \"\",\n  \"contactMobile\" : \"\",\n  \"merchantScore\" : 0,\n  \"merchantWeight\" : 0,\n  \"status\" : 0,\n  \"statusStr\" : \"\",\n  \"provinceName\" : \"\",\n  \"provinceId\" : 0,\n  \"cityName\" : \"\",\n  \"cityId\" : 0,\n  \"district\" : \"\",\n  \"districtId\" : 0,\n  \"createTime\" : \"\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "9c942063-573f-40ff-b7bb-eda51c13610a",
+          "name": "供应商状态变更",
+          "description": "0-待审核；1-审核通过；2-审核拒绝；3-禁用",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/merchant/changeMerchantStatusInfo/v1",
+              "query": []
+            },
+            "method": "POST",
+            "description": "0-待审核；1-审核通过；2-审核拒绝；3-禁用",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantId\" : 0,\n  \"status\" : 0,\n  \"remark\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/merchant/changeMerchantStatusInfo/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "description": "0-待审核；1-审核通过；2-审核拒绝；3-禁用",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\" : 0,\n  \"status\" : 0,\n  \"remark\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "商城用户接口",
+      "item": [
+        {
+          "id": "ec00588c-bcbb-40c2-ac97-3ddb326db958",
+          "name": "用户注册",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/mall/register/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userName\" : \"\",\n  \"password\" : \"\",\n  \"confirmPassword\" : \"\",\n  \"phone\" : \"\",\n  \"authCode\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/mall/register/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\" : \"\",\n  \"password\" : \"\",\n  \"confirmPassword\" : \"\",\n  \"phone\" : \"\",\n  \"authCode\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "30d30e30-a5e2-438d-8236-52c94dd7d360",
+          "name": "用户登录",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/mall/login/v1",
+              "query": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/mall/login/v1",
+                  "query": []
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\" : \"\",\n  \"password\" : \"\"\n}",
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        },
+        {
+          "id": "facee85e-e674-42a6-a2a2-0364978c9f86",
+          "name": "获取登录商城的用户信息",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "{{host}}",
+              "path": "/api/user/mall/getLoginUserInfo/v1",
+              "query": []
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "urlencoded": [],
+              "formdata": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "host": "{{host}}",
+                  "path": "/api/user/mall/getLoginUserInfo/v1",
+                  "query": []
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "urlencoded": [],
+                  "formdata": []
+                }
+              },
+              "header": [],
+              "body": "{\n  \"code\" : \"0\",\n  \"msg\" : \"\",\n  \"userMsg\" : \"\",\n  \"data\" : \"null\"\n}",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
